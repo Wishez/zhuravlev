@@ -1,0 +1,13 @@
+.contacts {
+  @include breakpoint(992px) {
+    margin-top: 185px;
+    text-align: left;
+    @include span(4);
+  }
+  text-align: center;
+  margin-top: 30px;
+  width: span(12);
+}
+
+@import '__title.scss';
+@import 'contactsStock.scss';

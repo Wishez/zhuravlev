@@ -1,0 +1,65 @@
+.connectForm {
+	color: $black;
+}
+.connectForm__controller, .controller__item {
+	margin-top: 20px
+}
+.connectForm__controller {
+	&:first-child {
+		margin-top: 50px;
+	}
+}
+
+.controller__item {
+	width: span(8);
+	@include breakpoint($xs) {
+		margin: 20px auto 0;
+	}
+}
+.controller__item-textarea {
+	width: span(12);
+	max-height: 116px;
+	@include breakpoint($xs) {
+		width: span(8);
+	}
+}
+
+.controller__label, .controller__item, .controller__error {
+	display: block;
+}
+.controller__error, .controller__label {
+	@include breakpoint($xs) {
+		text-align: center
+	}
+}
+
+.controller__label {
+	font-size: (22em / 16);
+	&:after {
+		content: '*';
+		color: $red; 
+	}
+}
+
+.controller__error { 
+	color: #bf4b49;
+}
+
+.controller__item {
+	font-size: (18em / 16);
+	border-bottom: 1px solid #ccc;
+	padding-left: 1%;
+}
+
+.connectForm__btn {
+  	background-color: $yellow;
+  	box-shadow: 0 0 10px $shadow;
+  	margin-top: 40px;
+  	font-size: (26em / 16);
+  	font-weight: bold;
+  	@include breakpoint($xs) {
+		margin: 40px auto 0;
+		display: block;
+		font-size: (22em / 16);
+	}
+}

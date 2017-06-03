@@ -1,0 +1,31 @@
+.servicesStock {
+  @extend .contactsStock;
+  display: grid;
+  @include breakpoint(992px) {
+    margin-top: 76px;  
+  }
+  @include breakpoint(780px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px 50px;
+  }
+  
+}
+
+.servicesStock__item {
+  position: relative;
+//  padding-left: 10% ;
+  margin-top: 23px;
+  & .fa {
+    margin-right: 15px;
+  }
+//  &::before {
+//    content: '';
+//    position: absolute;
+//    top: 3px;
+//    left: 0;
+//    width: 17px;
+//    height: 17px;
+//    @include round;
+//    border: 1px solid currentColor;
+//  }
+}

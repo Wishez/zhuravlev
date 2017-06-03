@@ -1,0 +1,29 @@
+.contactsStock {
+  font-size: (18em / 16);
+  @include breakpoint(992px) {
+    margin-top: 104px;
+  }
+  margin-top: 50px;
+  list-style-type: none;
+  @include breakpoint($xs) {
+    margin-top: 0;
+  }
+  & a {
+    color: $yellow !important;
+    transition: color 0.5s;
+    &:hover {
+      color: #fd24ff !important;
+    }
+    &:visited {
+      color: currentColor;
+    }
+  }
+}
+
+.contactsStock__item { 
+  margin-top: 25px;
+  & .fa {
+    margin-right: 15px;
+  }
+}
+

@@ -1,0 +1,30 @@
+#searchForm {
+  max-width: 262px;
+  &::before {
+    top: -85%;
+    left: -11%;
+    @include breakpoint($xs) {
+      top: -65%;
+    }
+    @include breakpoint($xxs) {
+      left: -7%;
+    }
+  }
+}
+
+.search {
+  @include span(4 of last);
+  margin-top: 10px;
+  @include breakpoint($xs) {
+    width: span(12);
+    margin-top: 135px;
+  }
+  &__icon {
+    position: absolute;
+    top: 12px;
+    right: 17px;
+    color: $red;
+  }
+}
+ 
+@import '__controller.scss';
