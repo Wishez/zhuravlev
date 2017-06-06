@@ -11,7 +11,7 @@ nav.navigaton
 		span.sr-only Toggle navigation
 		i.fa.fa-bars.fa-2x
 	ul.navList#navList
-		| {% if title == 'Филипп Журавлёв' or props.article or props.search %}
+		| {% if title == 'Филипп Журавлёв' or props.article_id or props.search %}
 		li.navItem.active
 			a.navItem__refer(href="{% url 'index' %}") Блог
 		| {% else %}
@@ -46,8 +46,11 @@ nav.navigaton
 
 
 main#main(style='display: none')
-	i.fa.fa-spinner.fa-pulse.fa-3x.fa-fw.center-block
-		span.sr-only Загрузка
+	.ui.big.text.inline.loader Загрузка&elliph;
+        
+      
+//- i.fa.fa-spinner.fa-pulse.fa-3x.fa-fw.center-block
+//- span.sr-only Загрузка
   
 script.
 	window.props = {{props|json}};

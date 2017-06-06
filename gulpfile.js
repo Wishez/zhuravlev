@@ -97,7 +97,8 @@ gulp.task('components', () => {
   //let components  = glob.sync('./blocks/components/*.js');
   return browserify({
       transform: ['hbsfy', 'envify'],
-      entries: settings.src + '/blocks/components/Blog_Playing.js',
+      //'envify'
+      entries: settings.src + '/blocks/components/Blog.js',
       //entries: components,
       debug: true
     })
@@ -110,7 +111,7 @@ gulp.task('components', () => {
       sourceMapsAbsolute: true
     })
     .bundle()
-    .pipe(source('Blog_Playing.js'))
+    .pipe(source('Blog.js'))
     .pipe(buffer())
     .pipe(uglify())
     .pipe(gulp.dest(settings.build + '/components'));

@@ -2,30 +2,26 @@ import React, { Component } from 'react';
 import { render } from 'react-dom'; 
 import ListItem from './ListItem';
 import Title from './Title';
-import 'whatwg-fetch';
+import configureStore from './../store/configureStore.js';
+import { Loader } from 'semantic-ui-react';
+import { fetchArticles } from './../actions/ArticlesActions.js';
+import { FETCH_POSTS } from './../constants/actionTypes.js';
+
+
+
+const store = configureStore();
 
 class Blog extends  Component {
-
-	state = {
-		articles: []
-	}
-
-	loadArticles() {
-
-		fetch('/api/v0/articles/')
-				.then(response => response.json())
-				.then(data => this.setState({articles: data}))
-				.catch(err => console.log(err))
-	}
-
 	componentDidMount() {
-		this.loadArticles();
+		this.props.loadArticles();
 	}
-
 
 	render() {
 		const  searchValue = this.props.search;
-		let articles = this.state.articles;
+		let articles = this.props.articles,
+			posts = [];
+
+
 			
 		if (searchValue) {
 			
@@ -42,26 +38,40 @@ class Blog extends  Component {
 
 		    	return false;
 	    	});
+
+	    	posts = articles.length === 0 ? <Title block='results' text='Ничего не найдено.' /> : '';
 		}
 
-		const posts = articles.length !== 0 ? articles.map((article) => (
+		posts = articles.length !== 0 ? articles.map((article) => (
 			<li key={article.id} className='articles-list__container clearfix'>
 				<ListItem article={article} />
 			</li>
-    	)) : <Title block='results' text='Ничего не найдено.' />;
+    	)) : <Loader active inline='centered' size='big' content='Загрузка...' />;
 
 
 		
 		return (
-			<section className='blog'>
-				<div className='container'>
-					<ul className='articles-list'>
-						{posts}
-					</ul>
-				</div>
-			</section>
+				<section className='blog'>
+					<div className='container'>
+						<ul className='articles-list'>
+							{posts}
+						</ul>
+					</div>
+				</section>
 		);
 	}
 }
 
-render(React.createElement(Blog, window.props), window.react_mount);
+const view = () => {
+	window.props.articles = store.getState().articles.posts;
+	window.props.loadArticles = () => { 
+		fetchArticles(
+			store,
+			{ type: FETCH_POSTS }
+		);
+	};
+
+	render(React.createElement(Blog, window.props), window.react_mount);
+};
+store.subscribe(view);
+view();

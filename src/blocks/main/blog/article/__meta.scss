@@ -1,0 +1,5 @@
+.article__meta {
+	@include breakpoint($xs) {
+		text-align: center;
+	}
+}

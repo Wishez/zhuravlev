@@ -8,7 +8,7 @@ export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 export const FETCH_POSTS = 'FETCH_POSTS'
 export const FETCH_ARTICLE = 'FETCH_ARTICLE'
-export const VisibilityFilters = {
+export const visibilityFilters = {
 	SHOW_ALL: 'SHOW_ALL',
 	SHOW_COMPLETED: 'SHOW_COMPLETED',
 	SHOW_ACTIVE: 'SHOW_ACTIVE'

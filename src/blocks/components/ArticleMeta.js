@@ -12,13 +12,14 @@ export default class ArticleMeta extends  Component  {
 			    <small className='article__date'>
 			    	{ date }
 			    </small>
-			    &nbsp;&nbsp;&nbsp;
+			    &thinsp;&thinsp;&thinsp;
+			    <br className='visible-xs' /> 
 			    <strong>Автор:</strong>
 			    &nbsp;
 			    <a className="not-follow" href="https://shining-present.ru" 
-		    	   itemscope 
-		    	   itemtype="http://schema.org/Person">
-			    	<small itemprop="name">
+		    	   itemScope 
+		    	   itemType="http://schema.org/Person">
+			    	<small itemProp="name">
 			    		Филипп Журавлёв
 			    	</small>
 			    </a>

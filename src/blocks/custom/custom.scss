@@ -23,6 +23,7 @@ $md: 992px 1199px;
 $sm: 768px 991px;
 $xs-only: 480px 800px;
 $xs: max-width 767px;
+$xs-up: 767px;
 $xxs: max-width 375px;
 /* Mixins */
 @mixin round() {
@@ -83,6 +84,13 @@ button, a {
   cursor: pointer;
 }
 
+h5 {
+  font: {
+    family: $stackInglobal;
+    size: (21em / 16);
+    weight: bold;
+  }
+}
 a {
   color: $blue !important;
   &:hover {
@@ -99,7 +107,7 @@ a {
   }
 }
 p {
-  margin-bottom: 1em;
+  margin: 0.5em 0;
 }
 
 .placeholder {
