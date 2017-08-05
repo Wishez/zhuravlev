@@ -1,0 +1,9 @@
+.blog, .article, .about {
+	& > .container {
+		@include breakpoint($xs-up) {
+			max-width: 750px !important;
+		}
+
+	}
+}
+ @import 'articles.scss'; 

@@ -1,0 +1,6 @@
+.about__paragraph {
+	&:last-child {
+		margin-top: 54px;
+	}
+	@extend .paragraph;
+}
