@@ -60,7 +60,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'blog/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -85,10 +85,10 @@ WSGI_APPLICATION = 'zhuravlev.wsgi.application'
 
 DATABASES = {
     'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'zhuravlev',
-            'USER': 'zhuravlev',
-            'PASSWORD': 'root',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'zhuravlev_db',
+            'USER': 'gm',
+            'PASSWORD': 'demonstration',
             'HOST': 'localhost',
             'PORT': '5432'
     }
@@ -126,12 +126,19 @@ USE_L10N = True
 
 USE_TZ = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'greeter@shining-present.ru'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'C:/Users/Shining/django-projects/zhuravlev/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static');
+
 MEDIA_URL = '/media/'
-ADMIN_MEDIA_PREFIX = 'C:/Users/Shining/django-projects/zhuravlev/media'
-MEDIA_ROOT = 'C:/Users/Shining/django-projects/zhuravlev/media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

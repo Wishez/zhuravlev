@@ -1,6 +1,7 @@
 node_modules
 bower_components
 .sass-cache
+.idea
 admin
-public
 rest_framework
+grappelli

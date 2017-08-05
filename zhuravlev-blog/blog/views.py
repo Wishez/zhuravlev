@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
-# for server
-# import sys
-# encoding = 'utf-8'
-# sys.reload()
-# sys.setdefaultencoding(encoding)
-
 from django.shortcuts import render
 from .models import *
 import json
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import EmailMessage
 # Create your views here.
 
 template = 'index.html'
@@ -60,6 +55,9 @@ def connect(request):
             message=data['message']
         )
         contact.save()
+
+        orderMsg = '%s\n%s\n%s\n%s' % (data['first_name'], data['last_name'], data['email'], data['message'])
+        EmailMessage('filipp-zhuravlev.ru Message', orderMsg, to=['shiningfinger@list.ru']).send()
 
         html = '<p class="text-center paragraph" style="padding: 0;">Спасибо! Скоро я отвечу вам.</p>'
 

@@ -1,23 +1,25 @@
 # -*- coding: utf-8 -*-
+# import sys
+# encoding = 'utf-8'
+# sys.reload()
+# sys.setdefaultencoding(encoding)
 from django.db import models
-
 from django.utils.translation import ugettext_lazy as _
-from django.utils.encoding import python_2_unicode_compatible
-@python_2_unicode_compatible
+
 class Tag(models.Model):
     tag_name = models.CharField(_('Тэг'), max_length=20)
 
     def __str__(self):
         return self.tag_name
     class Meta:
-        verbose_name = 'Тэг'
-        verbose_name_plural = 'Тэги'
+        verbose_name = _('Тэг')
+        verbose_name_plural = _('Тэги')
 # Create your models here.
-@python_2_unicode_compatible
+
 class Article(models.Model):
     author = models.ForeignKey('auth.User',
+                               verbose_name=_('Автор'),
                                blank=True,
-                               verbose_name='Автор',
                                null=True
                                )
     title = models.CharField(_('Заголовок'), max_length=128)
@@ -25,9 +27,6 @@ class Article(models.Model):
     announce_text = models.TextField(_('Анонс'), max_length=512, blank=True)
     text = models.TextField(_('Текст'), max_length=20000)
     tags = models.ManyToManyField(Tag, verbose_name=_('Теги'))
-
-
-
 
     def __str__(self):
         return self.title
@@ -41,7 +40,7 @@ class Article(models.Model):
         verbose_name = _('Статья')
         verbose_name_plural = _('Статьи')
 
-@python_2_unicode_compatible
+
 class Contact(models.Model):
     first_name = models.CharField(_('Имя'), max_length=30)
     last_name = models.CharField(_('Фамилия'), max_length=40)
@@ -50,7 +49,7 @@ class Contact(models.Model):
     contacted_at = models.DateTimeField(_('Написал'), auto_now_add=True)
 
     def __str__(self):
-        return self.first_name # + '|' + self.contacted_at
+        return self.first_name
     class Meta:
-        verbose_name = 'Контакт'
-        verbose_name_plural = 'Контакты'
+        verbose_name = _('Контакт')
+        verbose_name_plural = _('Контакты')

@@ -1,0 +1,4 @@
+.article__toArticles {
+	@extend .article__toArticle;
+	@include span(12);
+}

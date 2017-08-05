@@ -1,0 +1,9 @@
+.article__toArticle {
+	transition: color 0.5s;
+	@include span(last 3 of 12);
+	margin-top: 40px;
+	text-align: right;
+	@include breakpoint($xs) {
+		width: span(12);
+	}
+}

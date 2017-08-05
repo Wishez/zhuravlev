@@ -1,0 +1,6 @@
+.article__title {
+	transition: color 0.5s;
+	&:hover {
+		color: #7e7f7e;
+	}
+}
