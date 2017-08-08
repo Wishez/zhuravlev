@@ -95,6 +95,7 @@
     "js-cookie": "^2.1.4",
     "jshint": "^2.9.5",
     "prop-types": "^15.5.8",
+    "react-disqus-comments": "^1.0.3",
     "react-html-parser": "^1.0.3",
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.1.1",

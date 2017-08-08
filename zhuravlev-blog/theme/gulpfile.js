@@ -135,7 +135,7 @@ gulp.task('fastcomponent', () => {
 
   return browserify({
       transform: ['hbsfy'],
-      entries: settings.src + '/blocks/components/Connect.js',
+      entries: settings.src + '/blocks/components/Blog.js',
       debug: true
       //plugin: [collapse]
     })
@@ -144,7 +144,7 @@ gulp.task('fastcomponent', () => {
     //  global: true
     // })
     .bundle()
-    .pipe(source('Connect.js'))
+    .pipe(source('Blog.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write('.'))

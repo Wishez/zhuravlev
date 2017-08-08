@@ -1,6 +1,11 @@
 .articles-list {
 	list-style-type: none;
+	@include span(8);
+	@include breakpoint($xs) {
+		width: span(12);
+	}
 }
-@import '__container.scss';
 
+
+@import '__container.scss';
 @import 'article/article.scss';

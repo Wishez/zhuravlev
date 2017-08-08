@@ -1,0 +1,13 @@
+.additionInfo {
+	width: span(4);
+	@include last;
+	@include breakpoint($xs) {
+		width: span(12);
+	}
+}
+
+.additionInfo__tags .label{
+	margin-top: 1em;
+	margin-right: 0.5em;
+}
+

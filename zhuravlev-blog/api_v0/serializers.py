@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from rest_framework import serializers
-from blog.models import Article
+from blog.models import *
 
 
 class ArticlePreviewSerializer(serializers.ModelSerializer):
@@ -29,4 +29,11 @@ class ArticleDetailSerializer(serializers.ModelSerializer):
             'text',
             'author',
             'tags'
+        ]
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = [
+            'tag_name'
         ]

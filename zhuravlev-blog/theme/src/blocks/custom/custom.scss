@@ -17,8 +17,11 @@ $nightBlack: #3f3c39;
 $red: #bf4b49;
 $shadow: rgba(0, 0, 0, .6);
 $black:  #464646;
+$darkGray: #3a3a3a;
 $lightGreen: #efffec;
 $darkGreen: #445f3e;
+$white: #f4f4f4;
+
 /* breakpoints */
 $lg: 1200px;
 $md: 992px 1199px;
@@ -28,8 +31,11 @@ $xs: max-width 767px;
 $xs-up: 767px;
 $xxs: max-width 375px;
 /* Mixins */
-@mixin round() {
+%round {
   border-radius: 50%;
+}
+@mixin round() {
+  @extend %round;
 }
 @mixin xs-center-text() {
   @include breakpoint($xs) {
@@ -80,16 +86,12 @@ body {
   -webkit-hyphenate-after: 3;
   hyphenate-lines: 3;
   color: $black;
+  background-color: $white;
 }
 button, a {
   cursor: pointer;
 }
-article {
-  @include breakpoint($xs) {
-    padding: 0 10%;
-    
-  }
-}
+
 h5 {
   font: {
     family: $stackInglobal;
@@ -117,10 +119,17 @@ a {
 p {
   margin: 0.5em 0;
 }
-p, pre, .title, h5 {
+p, pre, .title, h5, #disqus_thread, .article__toArticles, .article__toArticle {
   max-width: 750px;
 }
-
+pre {
+  color: #e4e4e4;
+  background-color: $darkGray;
+  padding: 2% 3%;
+  @include breakpoint($xs) {
+      padding: 5%;
+  }
+}
 .placeholder {
   color: #aaa;
 }

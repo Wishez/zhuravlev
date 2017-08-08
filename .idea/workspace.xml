@@ -24,17 +24,113 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+  <component name="DockManager">
+    <window id="2">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/zhuravlev-blog/blog/models.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="-51">
+                    <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="zhuravlev" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/zhuravlev-blog/blog/views.py">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Temp/scp56069/webapps/zhuravlev/zhuravlev/zhuravlev/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
+              <caret line="62" column="13" lean-forward="false" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhuravlev-blog/zhuravlev/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="57" column="34" lean-forward="false" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhuravlev-blog/api_v0/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhuravlev-blog/api_v0/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="19" />
+              <folding>
+                <element signature="e#24#62#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhuravlev-blog/blog/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-51">
               <caret line="41" column="18" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhuravlev-blog/api_v0/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="16" />
+              <folding>
+                <element signature="e#24#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/zhuravlev-blog/api_v0/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding>
+                <element signature="e#24#72#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhuravlev-blog/zhuravlev/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -80,6 +176,13 @@
         <option value="$USER_HOME$/AppData/Local/Temp/scp33713/webapps/zhuravlev/zhuravlev/zhuravlev/settings.py" />
         <option value="$USER_HOME$/AppData/Local/Temp/scp33295/webapps/zhuravlev/zhuravlev/blog/models.py" />
         <option value="$USER_HOME$/AppData/Local/Temp/scp40768/webapps/zhuravlev/zhuravlev/zhuravlev/urls.py" />
+        <option value="$USER_HOME$/AppData/Local/Temp/scp27914/webapps/zhuravlev/zhuravlev/zhuravlev/urls.py" />
+        <option value="$PROJECT_DIR$/zhuravlev-blog/zhuravlev/urls.py" />
+        <option value="$USER_HOME$/AppData/Local/Temp/scp56069/webapps/zhuravlev/zhuravlev/zhuravlev/settings.py" />
+        <option value="$PROJECT_DIR$/zhuravlev-blog/zhuravlev/settings.py" />
+        <option value="$PROJECT_DIR$/zhuravlev-blog/api_v0/serializers.py" />
+        <option value="$PROJECT_DIR$/zhuravlev-blog/api_v0/views.py" />
+        <option value="$PROJECT_DIR$/zhuravlev-blog/api_v0/urls.py" />
       </list>
     </option>
   </component>
@@ -90,8 +193,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="531" />
-    <option name="y" value="120" />
+    <option name="x" value="586" />
+    <option name="y" value="79" />
     <option name="width" value="1170" />
     <option name="height" value="781" />
   </component>
@@ -174,13 +277,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhuravlev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhuravlev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zhuravlev-blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api_v0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="C:/my_box/programms/dev/Node/node" />
@@ -480,7 +601,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="531" y="120" width="1170" height="781" extended-state="0" />
+    <frame x="586" y="79" width="1170" height="781" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3136915" sideWeight="0.49425286" order="0" side_tool="false" content_ui="combo" />
@@ -536,15 +657,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/zhuravlev/settings.py" />
-    <entry file="file://$PROJECT_DIR$/api_v0/urls.py" />
-    <entry file="file://$PROJECT_DIR$/api_v0/serializers.py" />
-    <entry file="file://$PROJECT_DIR$/blog/models.py" />
-    <entry file="file://$PROJECT_DIR$/api_v0/apps.py" />
-    <entry file="file://$PROJECT_DIR$/zhuravlev/urls.py" />
-    <entry file="file://$PROJECT_DIR$/blog/urls.py" />
-    <entry file="file://$PROJECT_DIR$/blog/views.py" />
-    <entry file="file://$PROJECT_DIR$/zhuravlev/settings.py" />
     <entry file="file://$PROJECT_DIR$/api_v0/urls.py" />
     <entry file="file://$PROJECT_DIR$/api_v0/serializers.py" />
     <entry file="file://$PROJECT_DIR$/api_v0/apps.py" />
@@ -586,11 +698,91 @@
     <entry file="file://$USER_HOME$/AppData/Local/Temp/scp33295/webapps/zhuravlev/zhuravlev/blog/models.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/scp33713/webapps/zhuravlev/zhuravlev/zhuravlev/settings.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/scp40768/webapps/zhuravlev/zhuravlev/zhuravlev/urls.py" />
-    <entry file="file://$PROJECT_DIR$/zhuravlev-blog/blog/views.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/scp27914/webapps/zhuravlev/zhuravlev/zhuravlev/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#643#684#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhuravlev-blog/zhuravlev/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhuravlev-blog/zhuravlev/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="57" column="34" lean-forward="false" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhuravlev-blog/api_v0/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhuravlev-blog/blog/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/scp56069/webapps/zhuravlev/zhuravlev/zhuravlev/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
+          <caret line="62" column="13" lean-forward="false" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhuravlev-blog/api_v0/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="19" />
+          <folding>
+            <element signature="e#24#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhuravlev-blog/blog/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
           <caret line="41" column="18" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhuravlev-blog/api_v0/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="16" />
+          <folding>
+            <element signature="e#24#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhuravlev-blog/api_v0/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#72#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -25,12 +25,11 @@ SECRET_KEY = '3v($d0%a0#5oc04_jkwwnxlq@dhqvl@)oaje9rf0(5$=h3!89@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['filipp-zhuravlev.ru', 'www.filipp-zhuravlev.ru', 'localhost', '127.0.0.1']
 
-
-# Application definition
 
 INSTALLED_APPS = [
+    'disqus',
     'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,11 +41,27 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'api_v0.apps.ApiV0Config',
     'blog.templatetags.blog_filters',
+    'django.contrib.sites',
+    'corsheaders',
+    'oauth2_provider',
 ]
+# Application definition
+
+SITE_ID = 1
+DISQUS_API_KEY = 'MCHe9Ysg7zlriEp4hgS0924pvMIs7VRt3I8yLfGehExEKARLqt5mmTKnCNKtcePQ'
+DISQUS_WEBSITE_SHORTNAME = 'filipp-zhuravlev'
+CORS_ORIGIN_WHITELIST = (
+    'facebook.com',
+    'google.com',
+    'filipp-zhuravlev.ru',
+    'localhost',
+    'filipp-zhuravlev.disqus.com',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -138,7 +153,7 @@ EMAIL_USE_TLS = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static');
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

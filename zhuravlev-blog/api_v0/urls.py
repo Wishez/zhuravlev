@@ -4,5 +4,6 @@ from .views import *
 
 router = DefaultRouter()
 router.register(r'articles', ArticleViewSet)
+router.register(r'tags', TagViewSet)
 
 urlpatterns = router.urls

@@ -1,21 +1,22 @@
-import { FETCH_ARTICLE, FETCH_POSTS, visibilityFilters } from './../constants/actionTypes.js';
+import { FETCH_ARTICLE, FETCH_POSTS, visibilityFilters, FETCH_TAGS } from './../constants/actionTypes.js';
 import React from 'react'; 
 
-function fetchPosts(data) {
-	return { 
+const fetchPosts = data => ({ 
 		type: FETCH_POSTS, 
 		posts: data
-	};
-}
+});
 
-function fetchArticle(data) {
-	return { 
-		type: FETCH_ARTICLE,
-	 	article: data
-	 };
-}
+const fetchArticle = data => ({ 
+	type: FETCH_ARTICLE,
+ 	article: data
+});
  
-export const fetchArticles = (state, action) => {
+const fetchTags = data => ({
+	type: FETCH_TAGS,
+	tags: data
+});
+
+export const fetchData = (state, action) => {
 	switch (action.type) {
 		case FETCH_POSTS:
 			fetch('/api/v0/articles/')
@@ -29,7 +30,14 @@ export const fetchArticles = (state, action) => {
 				.then(response => response.json())
 				.then(data => { 
 					state.dispatch(fetchArticle(data));
-			});
+				});
+			break;
+		case FETCH_TAGS:
+			fetch('/api/v0/tags/')
+				.then(response => response.json())
+				.then(data => {
+					state.dispatch(fetchTags(data));
+				});
 			break;
 		default:
 			return state;
@@ -74,6 +82,5 @@ export const filterArticles = (
 			return filterByTag(articles, action.tag);
 		default:
 			return articles;
-
 	};
 };

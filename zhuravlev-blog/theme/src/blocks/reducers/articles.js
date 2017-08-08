@@ -1,8 +1,15 @@
-import { SET_VISIBILITY_FILTER, FETCH_POSTS, FETCH_ARTICLE} from '../constants/actionTypes.js';
+import { 
+	SET_VISIBILITY_FILTER,
+	FETCH_POSTS,
+	FETCH_ARTICLE,
+	FETCH_TAGS
+} from '../constants/actionTypes.js';
 
 const initState = {
 	posts: [],
-	article: {}
+	article: {},
+	tags: [],
+	shown_articles: 5
 };
 
 
@@ -17,6 +24,11 @@ const articles = (state = initState, action) => {
 			return {
 				...state,
 				article: action.article
+			};
+		case FETCH_TAGS:
+			return {
+				...state,
+				tags: action.tags
 			};
 		default:
 			return state;

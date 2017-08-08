@@ -1,50 +1,80 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom'; 
-// import ListItem from './ListItem';
 import configureStore from './../store/configureStore.js';
-// import Title from './Title';
-// import { Loader } from 'semantic-ui-react';
-import { fetchArticles, filterArticles } from './../actions/ArticlesActions.js';
-import { FETCH_POSTS, visibilityFilters, SET_VISIBILITY_FILTER } from './../constants/actionTypes.js';
-import { Button } from 'semantic-ui-react';
+import { fetchData, filterArticles } from './../actions/ArticlesActions.js';
+import { 
+	FETCH_POSTS,
+	visibilityFilters,
+	SET_VISIBILITY_FILTER,
+	FETCH_TAGS
+} from './../constants/actionTypes.js';
 import ArticlesList from './ArticlesList';
+import AsideInfo from './AsideInfo';
+
 
 
 const store = configureStore();
 
 class Blog extends Component {
 
+
 	componentDidMount() {
-		const { search, showSearch, loadArticles } = this.props;
+		const { search, showSearch, loadArticles, loadTags } = this.props;
 
 		if (search) {
 			showSearch();
 		}
-		
+		loadTags();
 		loadArticles();
 	}
-			
+
+	filterByTag = tag_name => {
+		store.dispatch({
+			type: SET_VISIBILITY_FILTER,
+			filter: visibilityFilters.SHOW_BY_TAG,
+			tag: tag_name
+		});				
+	}
+	showAllArticles = () => {
+		store.dispatch({
+			type: SET_VISIBILITY_FILTER,
+			action: visibilityFilters.SHOW_ALL,
+			value: '',
+			tag: ''
+		});
+	}
+
+	randomTagSize = size => {
+		console.log(size);
+		switch (size) {
+			case 1:
+				return 'massive';
+			case 2: 
+				return 'big';
+			case 3:
+				return 'huge';
+			default:
+				return 'big';
+		};
+
+	}	
 	render() {
 		const {
 			search,
 			visibilityFilter,
-			showSearch
+			showSearch,
+			tags
 		} = this.props;
 
 		let articles = this.props.articles;
 		return (
 				<section className='blog'>
 					<div className='container'>
-						<Button size='big' 
-							content="Показать все статьи"
-							onClick={() => {
-								store.dispatch({
-									type: SET_VISIBILITY_FILTER,
-									action: visibilityFilters.SHOW_ALL,
-									value: '',
-									tag: ''
-								})
-							}}
+						<AsideInfo 
+							tags={tags}
+							filterByTag={this.filterByTag}
+							showAllArticles={this.showAllArticles}
+							randomTagSize={this.randomTagSize}
 						/>
 						<ArticlesList articles={filterArticles(articles, 
 							{
@@ -52,13 +82,7 @@ class Blog extends Component {
 								value: search,
 								tag: visibilityFilter.tag
 							})}
-							filterByTag={tag_name => {
-								store.dispatch({
-									type: SET_VISIBILITY_FILTER,
-									filter: visibilityFilters.SHOW_BY_TAG,
-									tag: tag_name
-								})
-							}}
+							filterByTag={this.filterByTag}
 						 />
 					</div>
 				</section>
@@ -67,14 +91,26 @@ class Blog extends Component {
 }
 
 const view = () => {
-	window.props.articles = store.getState().articles.posts;
-	window.props.visibilityFilter = store.getState().visibilityFilter;
+	const state = store.getState();
+	const articlesState = state.articles;
+	window.props.articles = articlesState.posts;
+	window.props.visibilityFilter = state.visibilityFilter;
+	window.props.tags = articlesState.tags;
 	window.props.loadArticles = () => { 
-		fetchArticles(
+		fetchData(
 			store,
 			{ type: FETCH_POSTS }
 		);
 	};
+	
+	window.props.loadTags = () => {
+		fetchData(
+			store,
+			{ type: FETCH_TAGS }
+		);	
+	};
+
+
 	window.props.showSearch = () => {
 		store.dispatch({
 			type: SET_VISIBILITY_FILTER,

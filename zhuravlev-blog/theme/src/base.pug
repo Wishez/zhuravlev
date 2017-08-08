@@ -18,6 +18,7 @@ html.no-js(lang="ru", manifest="{% static 'zhuravlev/app.manifest' %}")
     )
     | {% block title %}
     | {% endblock %}
+    //- script(type="text/javascript",src="//vk.com/js/api/openapi.js?146")
   body
     include blocks/header/header.pug
 
@@ -34,6 +35,53 @@ html.no-js(lang="ru", manifest="{% static 'zhuravlev/app.manifest' %}")
     //-     publicSrc + "/js/main.js", publicSrc + "/css/main.css", publicSrc + 'inglobal.otf',
     //-     publicSrc + 'inglobalb.otf', publicSrc + "/img/flags@2x.jpg"]
     //-   });
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-103835197-2', 'auto');  
+      ga('send', 'pageview');
+  
+
+    //- script.
+        //- VK.init({apiId: Filipp Zhuravlev, onlyWidgets: true});
+
+
+    //- script.
+        
+
+    //- var disqus_config = function () {
+    //-     this.page.remote_auth_s3 = '<message> <hmac> <timestamp>';
+    //-     this.page.api_key = 'public_api_key';
+    //- };
+    //- (function() { 
+        //- var doc = document, 
+        //-     dsq = doc.createElement('script'),
+        //-     head = doc.getElementsByTagName('head')[0],
+        //-     body =  doc.getElementsByTagName('body')[0];
+        
+        //- dsq.type = 'text/javascript';
+        //- dsq.async = true;
+        //- dsq.src = 'https://filipp-zhuravlev.disqus.com/embed.js';
+        //- dsq.setAttribute('data-timestamp', +new Date());
+
+        //- console.log(body, 'body');
+        //- console.log(head, 'head');
+
+        //- (head || body).appendChild(dsq);
+    //- })();
+
+    //- <noscript>Please enable JavaScript to view the <a href="https://
+    //- disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+    //- script(type="text/javascript", src="//vk.com/js/api/openapi.js?146")
+
+
+
+
+
     script(async, src="{% static 'zhuravlev/js/main.js' %}", type="application/javascript")
     link(
         rel="stylesheet",

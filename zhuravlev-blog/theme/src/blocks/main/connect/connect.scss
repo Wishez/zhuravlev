@@ -13,6 +13,7 @@
 .controller__item {
 	width: span(8);
 	max-width: 575px;
+	background-color: transparent;
 	@include breakpoint($xs) {
 		margin: 20px auto 0;
 	}

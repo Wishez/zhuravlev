@@ -11,3 +11,9 @@ class ArticleViewSet(viewsets.ReadOnlyModelViewSet):
         if self.action == 'list':
             return ArticlePreviewSerializer
         return ArticleDetailSerializer
+
+
+class TagViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
