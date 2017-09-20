@@ -8,8 +8,7 @@ import {
 const initState = {
 	posts: [],
 	article: {},
-	tags: [],
-	shown_articles: 5
+	tags: []
 };
 
 

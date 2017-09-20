@@ -1,13 +1,5 @@
 .article__date {
-	color: #777;
+	color: $gray;
 	font-style: italic;
-	margin-top: 22px;
-	// @include xs-center-text;
+	@extend %increasedMarginTop;
 }
-// .article__date {
-// 	@include breakpoint($xs) {
-// 		text-align: center;
-// 		display: block;
-// 		width: span(12);
-// 	}	
-// }

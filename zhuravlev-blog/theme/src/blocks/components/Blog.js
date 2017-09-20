@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom'; 
 import configureStore from './../store/configureStore.js';
-import { fetchData, filterArticles } from './../actions/ArticlesActions.js';
+import { fetchData } from './../actions/ArticlesActions.js';
+import { filterArticles, showMore } from './../actions/VisibilityFilterActions.js';
 import { 
 	FETCH_POSTS,
 	visibilityFilters,
@@ -10,7 +11,7 @@ import {
 } from './../constants/actionTypes.js';
 import ArticlesList from './ArticlesList';
 import AsideInfo from './AsideInfo';
-
+import { Button } from 'semantic-ui-react';
 
 
 const store = configureStore();
@@ -45,7 +46,6 @@ class Blog extends Component {
 	}
 
 	randomTagSize = size => {
-		console.log(size);
 		switch (size) {
 			case 1:
 				return 'massive';
@@ -57,16 +57,25 @@ class Blog extends Component {
 				return 'big';
 		};
 
-	}	
+	}
+	showMoreArticles = () => {
+		store.dispatch(showMore());
+		return ;
+	};
+
 	render() {
 		const {
 			search,
 			visibilityFilter,
 			showSearch,
-			tags
+			tags,
+			shown_articles
 		} = this.props;
 
-		let articles = this.props.articles;
+		let articles = this.props.articles.slice(0, shown_articles);
+
+		console.log('not croped:', articles, '\n need will be showen:', shown_articles, '\nlength:', articles.length);
+		console.log('cropped:', this.props.articles.slice(0, shown_articles));
 		return (
 				<section className='blog'>
 					<div className='container'>
@@ -84,6 +93,13 @@ class Blog extends Component {
 							})}
 							filterByTag={this.filterByTag}
 						 />
+						<div className='clearfix' />
+						{articles.length >= 5 ? 
+							<Button size='big'
+								content='Больше статей'
+								className='blog__moreArticles'
+								onClick={this.showMoreArticles} 
+							/> : ""}
 					</div>
 				</section>
 		);
@@ -93,9 +109,13 @@ class Blog extends Component {
 const view = () => {
 	const state = store.getState();
 	const articlesState = state.articles;
+	const visibilityFilter = state.visibilityFilter;
+
 	window.props.articles = articlesState.posts;
-	window.props.visibilityFilter = state.visibilityFilter;
 	window.props.tags = articlesState.tags;
+	window.props.visibilityFilter = visibilityFilter;
+	window.props.shown_articles = visibilityFilter.shown_articles;
+
 	window.props.loadArticles = () => { 
 		fetchData(
 			store,

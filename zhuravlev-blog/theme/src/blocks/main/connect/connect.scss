@@ -2,11 +2,11 @@
 	color: $black;
 }
 .connectForm__controller, .controller__item {
-	margin-top: 20px
+	@extend %increasedMarginTop;
 }
 .connectForm__controller {
 	&:first-child {
-		margin-top: 50px;
+		@extend %bigMarginTop;
 	}
 }
 
@@ -19,7 +19,7 @@
 	}
 }
 .controller__item-textarea {
-	width: span(12);
+	@extend %fullWidth;
 	max-height: 116px;
 	@include breakpoint($xs) {
 		width: span(8);
@@ -27,7 +27,7 @@
 }
 
 .controller__label, .controller__item, .controller__error {
-	display: block;
+	@extend %block;
 }
 .controller__error, .controller__label {
 	@include breakpoint($xs) {
@@ -36,7 +36,7 @@
 }
 
 .controller__label {
-	font-size: (18em / 16);
+	@extend %fs18;
 	&:after {
 		content: '*';
 	}
@@ -47,17 +47,17 @@
 }
 
 .controller__item {
-	font-size: (18em / 16);
-	border-bottom: 1px solid #ccc;
+	@extend %fs18;
+	border-bottom: 1px solid lighten($gray, 25%);
 	padding-left: 1%;
 }
 
 .connectForm__btn {
   	background-color: lighten($darkGreen, 20%);;
   	box-shadow: 0 0 10px $shadow;
-  	margin-top: 40px;
-  	font-size: (22em / 16);
-  	font-weight: bold;
+  	@extend %bigMarginTop;
+  	@extend %fs21;
+  	@extend %bold;
   	@include breakpoint($xs) {
 		margin: 40px auto 0;
 		display: block;

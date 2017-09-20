@@ -25,7 +25,7 @@ SECRET_KEY = '3v($d0%a0#5oc04_jkwwnxlq@dhqvl@)oaje9rf0(5$=h3!89@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['filipp-zhuravlev.ru', 'www.filipp-zhuravlev.ru', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['filipp-zhuravlev.ru', 'www.filipp-zhuravlev.ru', 'localhost', '127.0.0.1', '46.138.98.62']
 
 
 INSTALLED_APPS = [
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'oauth2_provider',
 ]
+    # 'oauth2_provider',
 # Application definition
 
 SITE_ID = 1
@@ -56,6 +57,8 @@ CORS_ORIGIN_WHITELIST = (
     'filipp-zhuravlev.ru',
     'localhost',
     'filipp-zhuravlev.disqus.com',
+    'help.disqus.com',
+    '46.138.98.62',
 )
 
 MIDDLEWARE = [

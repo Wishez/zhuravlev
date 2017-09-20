@@ -1,3 +1,4 @@
+$i: !important;
 /* Grid */
 $susy: (
   columns: 12,
@@ -21,6 +22,7 @@ $darkGray: #3a3a3a;
 $lightGreen: #efffec;
 $darkGreen: #445f3e;
 $white: #f4f4f4;
+$gray: #7e7f7e;
 
 /* breakpoints */
 $lg: 1200px;
@@ -33,6 +35,61 @@ $xxs: max-width 375px;
 /* Mixins */
 %round {
   border-radius: 50%;
+}
+%importantButton {
+  color: $white $i;
+  background-color: $red $i;
+}
+%defaultMarginTop {
+  margin-top: 1em;
+}
+%increasedMarginTop {
+  margin-top: 1.5em;
+}
+%bigMarginTop {
+  margin-top: 2em;
+}
+%zeroPadding {
+  padding: 0;
+}
+%fullWidth {
+  width: 100%;
+}
+%fullHeight {
+  height: 100%;
+}
+%zeroMargin {
+  margin: 0;
+}
+%centerMargin {
+  margin: 0 auto;
+}
+%fsBase {
+  font-size: 1em;
+}
+%fs18 {
+  font-size: (18em / 16); 
+}
+%fs21 {
+  font-size: (21em / 16); 
+}
+%fs24 {
+  font-size: (24em / 16); 
+}
+%bold {
+  font-weight: bold;
+}
+%defaultTrasitionColor {
+  transition: color 0.5s;
+}
+%leftSpan12 {
+  @include span(12);
+}
+%floatRight {
+  @include last;
+}
+%block {
+  display: block;
 }
 @mixin round() {
   @extend %round;
@@ -47,7 +104,7 @@ $xxs: max-width 375px;
 /* Body Custom */
 html, body {
   min-height: 100%;
-  width: 100%;
+  @extend %fullWidth;
 }
 body {
   & * {
@@ -88,23 +145,20 @@ body {
   color: $black;
   background-color: $white;
 }
-button, a {
-  cursor: pointer;
-}
+// button, a {
+//   cursor: pointer;
+// }
 
 h5 {
-  font: {
-    family: $stackInglobal;
-    size: (21em / 16);
-    weight: bold;
-  }
-  margin-top: 1.5em;
+  @extend %fs18;
+  @extend %bold;
+  @extend %increasedMarginTop;
 }
 a {
   color: $darkGreen !important;
   text-decoration: none !important;
   &:hover {
-    color: #7e7f7e !important;
+    color: $gray !important;
   }
   &:visited {
     color: currentColor;
@@ -119,9 +173,11 @@ a {
 p {
   margin: 0.5em 0;
 }
+
 p, pre, .title, h5, #disqus_thread, .article__toArticles, .article__toArticle {
   max-width: 750px;
 }
+
 pre {
   color: #e4e4e4;
   background-color: $darkGray;

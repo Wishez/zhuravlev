@@ -6,7 +6,7 @@ import ArticleMeta from './ArticleMeta';
 import configureStore from './../store/configureStore.js';
 import { FETCH_ARTICLE, SET_VISIBILITY_FILTER, visibilityFilters } from './../constants/actionTypes.js';
 import { Loader, Container } from 'semantic-ui-react';
-import { fetchArticles } from './../actions/ArticlesActions.js';
+import { fetchData } from './../actions/ArticlesActions.js';
 import Tags from './Tags';
 import ReactDisqusComments from 'react-disqus-comments';
 
@@ -77,7 +77,6 @@ export default class Article extends Component {
         		url={window.location.href}
         		category_id={article_id}
         		onNewComment={this.handleNewComment}/>
-				<div id="vk_comments"></div>
 			</Container>
 		);
 	}
@@ -86,7 +85,7 @@ export default class Article extends Component {
 const view = () => {
 	window.props.article = store.getState().articles.article;
 	window.props.loadArticle = () => {
-		fetchArticles(
+		fetchData(
 			store,
 			{ 	
 				type: FETCH_ARTICLE,

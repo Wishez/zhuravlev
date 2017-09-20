@@ -7,13 +7,13 @@ const AsideInfo = ({
 	showAllArticles,
 	randomTagSize
 }) => (
-	<aside className='additionInfo'>
+	<aside className='asideInfo'>
 		<Button size='big' 
-			className="additionInfo__showAllArticles"
+			className="asideInfo__showAllArticles"
 			content="Показать все статьи"
 			onClick={showAllArticles}
 		/>
-		<ul className='additionInfo__tags'>
+		<ul className='asideInfo__tags'>
 		{tags ?
 			tags.map((tag, index) => (
 				<Label

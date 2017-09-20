@@ -1,6 +1,6 @@
 .article__title {
-	transition: color 0.5s;
+	@extend %defaultTrasitionColor;
 	&:hover {
-		color: #7e7f7e;
+		color: $gray;
 	}
 }
