@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-# import sys
-# encoding = 'utf-8'
-# sys.reload()
-# sys.setdefaultencoding(encoding)
+from django.conf import settings
+if not settings.DEBUG:
+    import sys
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+    
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
