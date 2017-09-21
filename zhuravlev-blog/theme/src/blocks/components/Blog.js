@@ -74,8 +74,6 @@ class Blog extends Component {
 
 		let articles = this.props.articles.slice(0, shown_articles);
 
-		console.log('not croped:', articles, '\n need will be showen:', shown_articles, '\nlength:', articles.length);
-		console.log('cropped:', this.props.articles.slice(0, shown_articles));
 		return (
 				<section className='blog'>
 					<div className='container'>

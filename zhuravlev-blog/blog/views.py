@@ -26,6 +26,16 @@ def about(request):
     }
     return render(request, template, context)
 
+def archive(request):
+    context = {
+        'title': 'Архив',
+        'component': 'Archive.js',
+        'props': {
+            'search': ''
+        },
+    }
+    return render(request, template, context)
+
 def article(request, pk):
     article = Article.objects.get(pk=pk)
     #'article': {

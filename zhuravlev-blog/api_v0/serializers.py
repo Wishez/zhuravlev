@@ -37,3 +37,20 @@ class TagSerializer(serializers.ModelSerializer):
         fields = [
             'tag_name'
         ]
+
+class ArchiveArticleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = [
+            'id',
+            'title'
+        ]
+class YearSerializer(serializers.ModelSerializer):
+    articles = ArchiveArticleSerializer(many=True, read_only=True)
+    class Meta:
+        model = Year
+        fields = [
+            'id',
+            'year',
+            'articles'
+        ]

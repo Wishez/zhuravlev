@@ -55,3 +55,17 @@ class Contact(models.Model):
     class Meta:
         verbose_name = _('Контакт')
         verbose_name_plural = _('Контакты')
+
+
+class Year(models.Model):
+    year = models.IntegerField(_('Год'))
+    articles = models.ManyToManyField(
+        Article,
+        verbose_name=_('Статьи')
+    )
+
+    def __str__(self):
+        return '%s' % self.year
+    class Meta:
+        verbose_name = _('Год')
+        verbose_name_plural = _('Архив')

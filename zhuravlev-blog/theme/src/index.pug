@@ -35,13 +35,13 @@ nav.navigaton
 		li.navItem
 			a.navItem__refer(href="{% url 'about' %}") Обо мне	
 		| {% endif %}  
-		//- | {% if title == 'Архив' %}
-		//- li.navItem.active
-		//- 	a.navItem__refer(href='#') Архив
-		//- | {% else %}  
-		//- li.navItem
-		//- 	a.navItem__refer(href='#') Архив
-		//- | {% endif %}  
+		| {% if title == 'Архив' %}
+		li.navItem.active
+			a.navItem__refer(href="{% url 'archive' %}") Архив
+		| {% else %}  
+		li.navItem
+			a.navItem__refer(href="{% url 'archive' %}") Архив
+		| {% endif %}  
 | {% endblock %}
 | {% block content %}
 

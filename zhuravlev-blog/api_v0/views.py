@@ -17,3 +17,6 @@ class TagViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
+class YearViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Year.objects.all()
+    serializer_class = YearSerializer

@@ -1,20 +1,30 @@
-import { FETCH_ARTICLE, FETCH_POSTS,  FETCH_TAGS } from './../constants/actionTypes.js';
-import React from 'react'; 
+import { 
+	FETCH_ARTICLE,
+	FETCH_POSTS, 
+	FETCH_TAGS, 
+	FETCH_ARCHIVE 
+} from './../constants/actionTypes.js';
 
-const fetchPosts = data => ({ 
+const fetchPosts = posts => ({ 
 		type: FETCH_POSTS, 
-		posts: data
+		posts
 });
 
-const fetchArticle = data => ({ 
+const fetchArticle = article => ({ 
 	type: FETCH_ARTICLE,
- 	article: data
+ 	article
 });
  
-const fetchTags = data => ({
+const fetchTags = tags => ({
 	type: FETCH_TAGS,
-	tags: data
+	tags
 });
+
+const fetchArchive = archive => ({
+	type: FETCH_ARCHIVE,
+	archive
+});
+
 
 export const fetchData = (state, action) => {
 	switch (action.type) {
@@ -37,6 +47,14 @@ export const fetchData = (state, action) => {
 				.then(response => response.json())
 				.then(data => {
 					state.dispatch(fetchTags(data));
+				});
+			break;
+		case FETCH_ARCHIVE: 
+			fetch('/api/v0/archive/')
+				.then(response => response.json())
+				.then(data => {
+					console.log('got archive===>', data);
+					state.dispatch(fetchArchive(data));
 				});
 			break;
 		default:

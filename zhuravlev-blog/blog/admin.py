@@ -11,6 +11,16 @@ class AdminArticleModel(admin.ModelAdmin):
     search_fields = ['title', 'text', 'announce_text']
     filter_horizontal = ('tags',)
 
+class AdminYearModel(admin.ModelAdmin):
+
+    list_filter = ('year',)
+    date_hirarchy = 'year'
+    filter_fields = ('year',)
+    search_fields = ['year']
+    ordering = ('year',)
+    filter_horizontal = ('articles',)
+
+admin.site.register(Year, AdminYearModel)
 admin.site.register(Tag)
 admin.site.register(Article, AdminArticleModel)
 admin.site.register(Contact)

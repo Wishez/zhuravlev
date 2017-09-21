@@ -10,22 +10,6 @@ import { fetchData } from './../actions/ArticlesActions.js';
 import Tags from './Tags';
 import ReactDisqusComments from 'react-disqus-comments';
 
-
-			    	// <Tags 
-			    	// 	tags={ post.tags }
-			  			// filterByTag={(tag_name) => 
-			  			// 	{
-			  			// 		store.dispatch({
-			  			// 			type: SET_VISIBILITY_FILTER,
-			  			// 			action: {
-			  			// 				filter: visibilityFilters.SHOW_BY_TAG,
-			  			// 				tag: tag_name
-			  			// 			}
-			  			// 		})
-			  			// 	}
-
-			  			// }
-			    	// />
 const store = configureStore();
 
 export default class Article extends Component {

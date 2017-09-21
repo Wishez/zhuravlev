@@ -114,7 +114,7 @@ gulp.task('component', () => {
 
   return browserify({
       transform: ['hbsfy', 'envify'],
-      entries: settings.src + '/blocks/components/Article.js',
+      entries: settings.src + '/blocks/components/Blog.js',
       debug: true
       //plugin: [collapse]
     })
@@ -123,7 +123,7 @@ gulp.task('component', () => {
     //  global: true
     // })
     .bundle()
-    .pipe(source('Article.js'))
+    .pipe(source('Blog.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init())
     .pipe(uglify())
@@ -135,16 +135,13 @@ gulp.task('fastcomponent', () => {
 
   return browserify({
       transform: ['hbsfy'],
-      entries: settings.src + '/blocks/components/Blog.js',
+      entries: settings.src + '/blocks/components/Archive.js',
       debug: true
       //plugin: [collapse]
     })
     .transform("babelify", devBabelOptions)
-    //.transform("uglifyify", {
-    //  global: true
-    // })
     .bundle()
-    .pipe(source('Blog.js'))
+    .pipe(source('Archive.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write('.'))
