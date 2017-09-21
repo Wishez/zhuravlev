@@ -114,16 +114,12 @@ gulp.task('component', () => {
 
   return browserify({
       transform: ['hbsfy', 'envify'],
-      entries: settings.src + '/blocks/components/Blog.js',
+      entries: settings.src + '/blocks/components/Archive.js',
       debug: true
-      //plugin: [collapse]
     })
     .transform("babelify", prodBabelOptions)
-    //.transform("uglifyify", {
-    //  global: true
-    // })
     .bundle()
-    .pipe(source('Blog.js'))
+    .pipe(source('Archive.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init())
     .pipe(uglify())

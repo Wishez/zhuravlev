@@ -9,3 +9,5 @@ const Title = ({
 		{ReactHtmlParser(text)}
 	</h2>
 );
+
+export default Title;

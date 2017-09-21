@@ -53,7 +53,6 @@ export const fetchData = (state, action) => {
 			fetch('/api/v0/archive/')
 				.then(response => response.json())
 				.then(data => {
-					console.log('got archive===>', data);
 					state.dispatch(fetchArchive(data));
 				});
 			break;

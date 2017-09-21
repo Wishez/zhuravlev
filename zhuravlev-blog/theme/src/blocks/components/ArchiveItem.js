@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Title from './Title';
 
-
 const ArchiveItem = ({
 	year,
 	articles
@@ -13,10 +12,10 @@ const ArchiveItem = ({
 			{articles.map(article => (
 				<li key={article.id}
 					className='articlesByYearListItem'>
-					<Link to={`/articles/${article.id}`}
+					<a href={`/articles/${article.id}`}
 						className='articlesByYearListItem__refer'>
 						{article.title}
-					</Link>
+					</a>
 				</li>
 			))}
 		</ul>

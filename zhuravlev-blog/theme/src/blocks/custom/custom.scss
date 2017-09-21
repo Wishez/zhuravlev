@@ -145,15 +145,13 @@ body {
   color: $black;
   background-color: $white;
 }
-// button, a {
-//   cursor: pointer;
-// }
 
 h5 {
   @extend %fs18;
   @extend %bold;
-  @extend %increasedMarginTop;
+  margin-top: 2em !important;
 }
+
 a {
   color: $darkGreen !important;
   text-decoration: none !important;
@@ -177,7 +175,10 @@ p {
 p, pre, .title, h5, #disqus_thread, .article__toArticles, .article__toArticle {
   max-width: 750px;
 }
-
+ul {
+  @extend %defaultMarginTop;
+  list-style: none;
+}
 pre {
   color: #e4e4e4;
   background-color: $darkGray;

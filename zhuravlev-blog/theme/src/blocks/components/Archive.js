@@ -17,7 +17,6 @@ class Archive extends Component {
 
 	componentDidMount() {
 		const { loadArchive } = this.props;
-		console.log(loadArchive);
 		loadArchive(); 
 	}
 
