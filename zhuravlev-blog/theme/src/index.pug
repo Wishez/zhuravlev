@@ -47,10 +47,12 @@ nav.navigaton
 
 main#main
 	.ui.big.text.inline.loader Загрузка&elliph;
-   
-| {% load disqus_tags %}
-| {% disqus_dev %}
-| {% disqus_show_comments "filipp-zhuravlev" %}
+| {% if isArticle %}
+.container(style='padding: 0 0 10%') 
+	| {% load disqus_tags %}
+	| {% disqus_dev %}
+	| {% disqus_show_comments "filipp-zhuravlev" %}
+| {% endif %}
 
 script.
 	window.props = {{props|json}};

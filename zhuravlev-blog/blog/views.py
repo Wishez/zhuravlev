@@ -51,6 +51,7 @@ def article(request, pk):
         'title': article.title,
         'component': 'Article.js',
         'props': props,
+        'isArticle': True
     }
     return render(request, template, context)
 
