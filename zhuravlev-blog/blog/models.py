@@ -7,6 +7,7 @@ if not settings.DEBUG:
     
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
 
 class Tag(models.Model):
     tag_name = models.CharField(_('Тэг'), max_length=20)
@@ -25,7 +26,7 @@ class Article(models.Model):
                                null=True
                                )
     title = models.CharField(_('Заголовок'), max_length=128)
-    created_at = models.DateTimeField(_('Созадано'), auto_now_add=True)
+    created_at = models.DateTimeField(_('Созадано'), default=timezone.now)
     announce_text = models.TextField(_('Анонс'), max_length=512, blank=True)
     text = models.TextField(_('Текст'), max_length=20000)
     tags = models.ManyToManyField(Tag, verbose_name=_('Теги'))

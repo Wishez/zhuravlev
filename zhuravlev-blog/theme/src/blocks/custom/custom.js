@@ -9,11 +9,7 @@ $(window).resize(() => {
 });
 $(function() {
   const publicSrc = '/media/public';
-
-  $('.header').fadeIn('slow');
-  $('#main').fadeIn('slow');
-  $('footer').fadeIn('slow');
-
+  $('.curtain').fadeOut('slow');
   $(document).on('click', '#openMenuButton', openMenu);
 
   const $navList = $('#navList');

@@ -114,12 +114,12 @@ gulp.task('component', () => {
 
   return browserify({
       transform: ['hbsfy', 'envify'],
-      entries: settings.src + '/blocks/components/Archive.js',
+      entries: settings.src + '/blocks/components/Article.js',
       debug: true
     })
     .transform("babelify", prodBabelOptions)
     .bundle()
-    .pipe(source('Archive.js'))
+    .pipe(source('Article.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init())
     .pipe(uglify())
@@ -131,13 +131,13 @@ gulp.task('fastcomponent', () => {
 
   return browserify({
       transform: ['hbsfy'],
-      entries: settings.src + '/blocks/components/Archive.js',
+      entries: settings.src + '/blocks/components/Article.js',
       debug: true
       //plugin: [collapse]
     })
     .transform("babelify", devBabelOptions)
     .bundle()
-    .pipe(source('Archive.js'))
+    .pipe(source('Article.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write('.'))

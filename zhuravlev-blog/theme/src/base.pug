@@ -18,23 +18,91 @@ html.no-js(lang="ru", manifest="{% static 'zhuravlev/app.manifest' %}")
     )
     | {% block title %}
     | {% endblock %}
+    style.
+      .curtain {
+        margin: 0;
+        padding: 0;
+        background-color: #445f3e;
+        padding-top: 35vh;
+        height: 100vh;
+      }
+      .sk-cube-grid {
+        width: 80px;
+        height: 80px;
+        margin: 80px auto;
+        /*
+         * Spinner positions
+         * 1 2 3
+         * 4 5 6
+         * 7 8 9
+         */ }
+        .sk-cube-grid .sk-cube {
+          width: 33.33%;
+          height: 33.33%;
+          background-color: #f4f4f4;
+          float: left;
+          -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+                  animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; }
+        .sk-cube-grid .sk-cube1 {
+          -webkit-animation-delay: 0.2s;
+                  animation-delay: 0.2s; }
+        .sk-cube-grid .sk-cube2 {
+          -webkit-animation-delay: 0.3s;
+                  animation-delay: 0.3s; }
+        .sk-cube-grid .sk-cube3 {
+          -webkit-animation-delay: 0.4s;
+                  animation-delay: 0.4s; }
+        .sk-cube-grid .sk-cube4 {
+          -webkit-animation-delay: 0.1s;
+                  animation-delay: 0.1s; }
+        .sk-cube-grid .sk-cube5 {
+          -webkit-animation-delay: 0.2s;
+                  animation-delay: 0.2s; }
+        .sk-cube-grid .sk-cube6 {
+          -webkit-animation-delay: 0.3s;
+                  animation-delay: 0.3s; }
+        .sk-cube-grid .sk-cube7 {
+          -webkit-animation-delay: 0.0s;
+                  animation-delay: 0.0s; }
+        .sk-cube-grid .sk-cube8 {
+          -webkit-animation-delay: 0.1s;
+                  animation-delay: 0.1s; }
+        .sk-cube-grid .sk-cube9 {
+          -webkit-animation-delay: 0.2s;
+                  animation-delay: 0.2s; }
+        @-webkit-keyframes sk-cubeGridScaleDelay {
+          0%, 70%, 100% {
+            -webkit-transform: scale3D(1, 1, 1);
+                    transform: scale3D(1, 1, 1); }
+          35% {
+            -webkit-transform: scale3D(0, 0, 1);
+                    transform: scale3D(0, 0, 1); } }
+        @keyframes sk-cubeGridScaleDelay {
+          0%, 70%, 100% {
+            -webkit-transform: scale3D(1, 1, 1);
+                    transform: scale3D(1, 1, 1); }
+          35% {
+            -webkit-transform: scale3D(0, 0, 1);
+                    transform: scale3D(0, 0, 1); } }
     //- script(type="text/javascript",src="//vk.com/js/api/openapi.js?146")
   body
+    .curtain
+      .sk-cube-grid
+        .sk-cube.sk-cube1
+        .sk-cube.sk-cube2
+        .sk-cube.sk-cube3
+        .sk-cube.sk-cube4
+        .sk-cube.sk-cube5
+        .sk-cube.sk-cube6
+        .sk-cube.sk-cube7
+        .sk-cube.sk-cube8
+        .sk-cube.sk-cube9
     include blocks/header/header.pug
 
     | {% block content %}
     | {% endblock %}
     include blocks/footer/footer.pug    
-    //- script(src="{% static 'zhuravlev/js/upup.min.js' %}")
-    //- script.
-    //-   var publicSrc = '/static/zhuravlev';
-    //-   UpUp.start({
-    //-     'content-url': publicSrc + '/index.html',
-    //-     'assets': [publicSrc + "/img/greet.jpg", publicSrc + "/img/choice.jpg", publicSrc + "/img/prices.jpg", publicSrc + "/img/contacts.jpg", publicSrc + "/img/hint.jpg", publicSrc + "/img/process.jpg",
-    //-     publicSrc + "/img/manage.jpg", publicSrc + "/img/services.jpg", publicSrc + "/img/footer.jpg",
-    //-     publicSrc + "/js/main.js", publicSrc + "/css/main.css", publicSrc + 'inglobal.otf',
-    //-     publicSrc + 'inglobalb.otf', publicSrc + "/img/flags@2x.jpg"]
-    //-   });
+    
     script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -43,43 +111,6 @@ html.no-js(lang="ru", manifest="{% static 'zhuravlev/app.manifest' %}")
 
       ga('create', 'UA-103835197-2', 'auto');  
       ga('send', 'pageview');
-  
-
-    //- script.
-        //- VK.init({apiId: Filipp Zhuravlev, onlyWidgets: true});
-
-
-    //- script.
-        
-
-    //- var disqus_config = function () {
-    //-     this.page.remote_auth_s3 = '<message> <hmac> <timestamp>';
-    //-     this.page.api_key = 'public_api_key';
-    //- };
-    //- (function() { 
-        //- var doc = document, 
-        //-     dsq = doc.createElement('script'),
-        //-     head = doc.getElementsByTagName('head')[0],
-        //-     body =  doc.getElementsByTagName('body')[0];
-        
-        //- dsq.type = 'text/javascript';
-        //- dsq.async = true;
-        //- dsq.src = 'https://filipp-zhuravlev.disqus.com/embed.js';
-        //- dsq.setAttribute('data-timestamp', +new Date());
-
-        //- console.log(body, 'body');
-        //- console.log(head, 'head');
-
-        //- (head || body).appendChild(dsq);
-    //- })();
-
-    //- <noscript>Please enable JavaScript to view the <a href="https://
-    //- disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    
-    //- script(type="text/javascript", src="//vk.com/js/api/openapi.js?146")
-
-
-
 
 
     script(async, src="{% static 'zhuravlev/js/main.js' %}", type="application/javascript")

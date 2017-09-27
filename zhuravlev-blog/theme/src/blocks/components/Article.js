@@ -54,17 +54,17 @@ export default class Article extends Component {
 				   </a>
 				</article> :
 				<Loader active inline='centered' size='big' content='Загрузка...' />}
-				<ReactDisqusComments
-        		shortname="filipp-zhuravlev"
-        		identifier={`articles/${article_id}`}
-        		title={post.title}
-        		url={window.location.href}
-        		category_id={article_id}
-        		onNewComment={this.handleNewComment}/>
 			</Container>
 		);
 	}
 }
+				// <ReactDisqusComments
+    //     			shortname="filipp-zhuravlev"
+    //     			identifier={`articles/${article_id}`}
+    //     			title={post.title}
+    //     			url={window.location.href}
+    //     			category_id={article_id}
+    //     			onNewComment={this.handleNewComment} />
 
 const view = () => {
 	window.props.article = store.getState().articles.article;
