@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% load static disqus_tags blog_filters %}
+{% block meta %}<meta name="description" content="{{ meta }}"/>{% endblock %} 
 {% block title %}<title>{{ title }}</title>{% endblock %} 
 {% block nav %}<nav class="navigaton"><button class="navigation__openMenuButton visible-xs" id="openMenuButton"><span class="sr-only">Toggle navigation</span><i class="fa fa-bars fa-2x"></i></button><ul class="navList" id="navList">{% if title == 'Филипп Журавлёв' or props.article_id or props.search %}<li class="navItem active"><a class="navItem__refer" href="{% url 'index' %}">Блог</a></li>{% else %}<li class="navItem"><a class="navItem__refer" href="{% url 'index' %}">Блог</a></li>{% endif %}
 {% if title == 'Связь' %}<li class="navItem active"><a class="navItem__refer" href="{% url 'connect' %}">Контакты</a></li>{% else %}<li class="navItem"><a class="navItem__refer" href="{% url 'connect' %}">Контакты</a></li>{% endif %}<li class="navItem"><a class="navItem__refer not-follow" href="https://shining-present.ru">Портфолио</a></li>{% if title == 'Обо мне' %}<li class="navItem active"><a class="navItem__refer" href="{% url 'about' %}">Обо мне</a></li>{% else %}<li class="navItem"><a class="navItem__refer" href="{% url 'about' %}">Обо мне	</a></li>{% endif %}  
 {% if title == 'Архив' %}<li class="navItem active"><a class="navItem__refer" href="{% url 'archive' %}">Архив</a></li>{% else %}  <li class="navItem"><a class="navItem__refer" href="{% url 'archive' %}">Архив</a></li>{% endif %}  </ul></nav>{% endblock %}
-{% block content %}<main id="main"><div class="ui big text inline loader">Загрузка&elliph;</div></main>{% if isArticle %}<div class="container" style="padding: 0 0 10%;"> {% load disqus_tags %}
+{% block content %}<main id="main"><div class="ui big text inline loader">Загрузка&elliph;</div></main>{% if isArticle %}<div class="container" style="padding-bottom: 10%;"> {% load disqus_tags %}
 {% disqus_dev %}
 {% disqus_show_comments "filipp-zhuravlev" %}</div>{% endif %}<script>window.props = {{props|json}};
 window.react_mount = document.getElementById('main');</script><script async="async" src="/static/zhuravlev/components/{{component}}"></script>{% endblock %}

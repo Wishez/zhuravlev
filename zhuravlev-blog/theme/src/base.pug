@@ -11,20 +11,28 @@ html.no-js(lang="ru", manifest="{% static 'zhuravlev/app.manifest' %}")
       http-equive="X-UA-Compatible",
       content="IE=edge"
     )
+    | {% block meta %}
+    | {% endblock %}
+
+    | {% block title %}
+    | {% endblock %}
+    
     link(
         rel="shortcut icon", 
         type="image/x-icon", 
         href="{% static 'zhuravlev/img/favicon.ico' %}"
     )
-    | {% block title %}
-    | {% endblock %}
     style.
       .curtain {
         margin: 0;
         padding: 0;
         background-color: #445f3e;
         padding-top: 35vh;
-        height: 100vh;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
       }
       .sk-cube-grid {
         width: 80px;

@@ -2,7 +2,6 @@
 from rest_framework import serializers
 from blog.models import *
 
-
 class ArticlePreviewSerializer(serializers.ModelSerializer):
     tags = serializers.StringRelatedField(many=True)
     class Meta:

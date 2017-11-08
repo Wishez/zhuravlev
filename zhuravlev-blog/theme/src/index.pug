@@ -1,10 +1,12 @@
 | {% extends 'base.html' %}
 | {% load static disqus_tags blog_filters %}
 
+| {% block meta %}
+meta(name='description', content='{{ meta }}') 
+| {% endblock %} 
 | {% block title %}
 title {{ title }}
 | {% endblock %} 
-
 | {% block nav %}
 nav.navigaton
 	button#openMenuButton.navigation__openMenuButton.visible-xs
@@ -48,7 +50,7 @@ nav.navigaton
 main#main
 	.ui.big.text.inline.loader Загрузка&elliph;
 | {% if isArticle %}
-.container(style='padding: 0 0 10%') 
+.container(style='padding-bottom: 10%;') 
 	| {% load disqus_tags %}
 	| {% disqus_dev %}
 	| {% disqus_show_comments "filipp-zhuravlev" %}
