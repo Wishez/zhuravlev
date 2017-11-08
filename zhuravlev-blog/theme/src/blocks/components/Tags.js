@@ -1,11 +1,10 @@
-
 import React from 'react'
 import { Label } from 'semantic-ui-react'
 
 const Tags = ({
 	tags,
 	filterByTag
-}) => (
+}) => ( 
 	<ul className='article__tags'>
 		{
 			tags.map((tag, index) => (
@@ -22,6 +21,7 @@ const Tags = ({
 			))
 		}
 	</ul>
+
 );
 
 export default Tags;

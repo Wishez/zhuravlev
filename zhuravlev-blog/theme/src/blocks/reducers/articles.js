@@ -5,37 +5,25 @@ import {
 	FETCH_TAGS,
 	FETCH_ARCHIVE
 } from '../constants/actionTypes.js';
+import { setData } from '../constants/localStorage.js';
 
-const initState = {
-	posts: [],
-	article: {},
-	tags: [],
-	archive: []
-};
+const initState = {};
 
 
 const articles = (state = initState, action) => {
 	switch(action.type) {
 		case FETCH_POSTS:
-			return {
-				...state,
-				posts: action.posts
-			};
+			setData('posts', action.posts);
+			return state;
 		case FETCH_ARTICLE:
-			return {
-				...state,
-				article: action.article
-			};
+			setData('article', action.article);
+			return state;
 		case FETCH_TAGS:
-			return {
-				...state,
-				tags: action.tags
-			};
+			setData('tags', action.tags);
+			return state;
 		case FETCH_ARCHIVE:
-			return {
-				...state,
-				archive: action.archive	
-			};
+			setData('archive', action.archive);
+			return state;
 		default:
 			return state;
 	}

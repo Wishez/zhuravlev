@@ -19,5 +19,5 @@ const ArchiveList = ({
 		}
 	</ul>
 );
-// <ArchiveItem {...year} />
+
 export default ArchiveList;

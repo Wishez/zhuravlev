@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom'; 
 import configureStore from './../store/configureStore.js';
+
 import { fetchData } from './../actions/ArticlesActions.js';
 import { filterArticles, showMore } from './../actions/VisibilityFilterActions.js';
 import { 
@@ -12,7 +13,7 @@ import {
 import ArticlesList from './ArticlesList';
 import AsideInfo from './AsideInfo';
 import { Button } from 'semantic-ui-react';
-
+import { setData, getData } from '../constants/localStorage.js';
 
 const store = configureStore();
 
@@ -21,10 +22,14 @@ class Blog extends Component {
 
 	componentDidMount() {
 		const { search, showSearch, loadArticles, loadTags } = this.props;
+		setData('posts', []);
+		setData('tags', []);
+
 
 		if (search) {
 			showSearch();
 		}
+
 		loadTags();
 		loadArticles();
 	}
@@ -62,28 +67,29 @@ class Blog extends Component {
 		store.dispatch(showMore());
 		return ;
 	};
+	getEmptyArrayIfIsUndefined = variable => (
+		typeof variable !== 'undefined' ? JSON.parse(variable) : []
+	)
 
 	render() {
 		const {
 			search,
 			visibilityFilter,
-			showSearch,
-			tags,
-			shown_articles
+			showSearch
 		} = this.props;
 
-		let articles = this.props.articles.slice(0, shown_articles);
-
+		// shown_articles
 		return (
 				<section className='blog'>
 					<div className='container'>
 						<AsideInfo 
-							tags={tags}
+							tags={this.getEmptyArrayIfIsUndefined(getData('tags'))}
 							filterByTag={this.filterByTag}
 							showAllArticles={this.showAllArticles}
 							randomTagSize={this.randomTagSize}
 						/>
-						<ArticlesList articles={filterArticles(articles, 
+						<ArticlesList articles={filterArticles(
+							this.getEmptyArrayIfIsUndefined(getData('posts')),
 							{
 								filter: visibilityFilter.filter,
 								value: search,
@@ -92,12 +98,11 @@ class Blog extends Component {
 							filterByTag={this.filterByTag}
 						 />
 						<div className='clearfix' />
-						{articles.length >= 5 ? 
-							<Button size='big'
-								content='Больше статей'
-								className='blog__moreArticles'
-								onClick={this.showMoreArticles} 
-							/> : ""}
+						{/* <Button size='big'
+							content='Больше статей'
+							className='blog__moreArticles'
+							onClick={this.showMoreArticles} 
+						/> */}
 					</div>
 				</section>
 		);
@@ -106,13 +111,12 @@ class Blog extends Component {
 
 const view = () => {
 	const state = store.getState();
-	const articlesState = state.articles;
+
 	const visibilityFilter = state.visibilityFilter;
 
-	window.props.articles = articlesState.posts;
-	window.props.tags = articlesState.tags;
+	
 	window.props.visibilityFilter = visibilityFilter;
-	window.props.shown_articles = visibilityFilter.shown_articles;
+	// window.props.shown_articles = visibilityFilter.shown_articles;
 
 	window.props.loadArticles = () => { 
 		fetchData(

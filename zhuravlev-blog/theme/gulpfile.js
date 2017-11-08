@@ -103,23 +103,25 @@ gulp.task('js', () => {
     .bundle()
     .pipe(source('main.js'))
     .pipe(buffer())
-    .pipe(uglify()).on('error', gutil.log)
     .pipe(sourcemaps.init())
+    .pipe(uglify()).on('error', gutil.log)
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(settings.build + '/js'));
 });
+
+const currComponent = 'Article.js';
 
 gulp.task('component', () => {
   process.env.NODE_ENV = 'production';
 
   return browserify({
       transform: ['hbsfy', 'envify'],
-      entries: settings.src + '/blocks/components/Article.js',
+      entries: settings.src + '/blocks/components/' + currComponent,
       debug: true
     })
     .transform("babelify", prodBabelOptions)
     .bundle()
-    .pipe(source('Article.js'))
+    .pipe(source(currComponent))
     .pipe(buffer())
     .pipe(sourcemaps.init())
     .pipe(uglify())
@@ -131,13 +133,13 @@ gulp.task('fastcomponent', () => {
 
   return browserify({
       transform: ['hbsfy'],
-      entries: settings.src + '/blocks/components/Article.js',
+      entries: settings.src + '/blocks/components/' + currComponent,
       debug: true
       //plugin: [collapse]
     })
     .transform("babelify", devBabelOptions)
     .bundle()
-    .pipe(source('Article.js'))
+    .pipe(source(currComponent))
     .pipe(buffer())
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write('.'))

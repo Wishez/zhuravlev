@@ -8,11 +8,11 @@ const AsideInfo = ({
 	randomTagSize
 }) => (
 	<aside className='asideInfo'>
-		<Button size='big' 
+		{/* <Button size='big' 
 			className="asideInfo__showAllArticles"
 			content="Показать все статьи"
 			onClick={showAllArticles}
-		/>
+		/> */}
 		<ul className='asideInfo__tags'>
 		{tags ?
 			tags.map((tag, index) => (
@@ -34,5 +34,6 @@ const AsideInfo = ({
 		</ul>
 	</aside>
 );
+
 
 export default AsideInfo;

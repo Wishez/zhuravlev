@@ -7,7 +7,7 @@ import {
 	FETCH_ARCHIVE
 } from './../constants/actionTypes.js';
 import ArchiveList from './ArchiveList';
-
+import { setData, getData } from '../constants/localStorage.js';
 
 
 const store = configureStore();
@@ -16,8 +16,8 @@ class Archive extends Component {
 
 
 	componentDidMount() {
-		const { loadArchive } = this.props;
-		loadArchive(); 
+		setData('archive', []);
+		this.props.loadArchive(); 
 	}
 
 	
@@ -25,15 +25,15 @@ class Archive extends Component {
 	
 
 	render() {
-		const {
-			archive
-		} = this.props;
-		console.log(this.props.archive, archive.length, '<=====archives');
 
 		return (
 				<section className='archive'>
 					<div className='container'>
-						<ArchiveList archive={archive} />
+						<ArchiveList archive={
+							typeof getData('archive') !== 'undefined' ? 
+								JSON.parse(getData('archive')) : 
+								[] 
+						} />
 					</div>
 				</section>
 		);
@@ -41,10 +41,6 @@ class Archive extends Component {
 }
 
 const view = () => {
-	const state = store.getState();
-	console.log('state is =>', state);
-	window.props.archive = state.articles.archive;
-
 	window.props.loadArchive = () => { 
 		fetchData(
 			store,
