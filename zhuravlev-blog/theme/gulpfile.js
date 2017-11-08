@@ -109,7 +109,7 @@ gulp.task('js', () => {
     .pipe(gulp.dest(settings.build + '/js'));
 });
 
-const currComponent = 'Article.js';
+const currComponent = 'Blog.js';
 
 gulp.task('component', () => {
   process.env.NODE_ENV = 'production';

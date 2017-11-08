@@ -9,15 +9,19 @@ $(window).resize(() => {
 });
 $(function() {
   const publicSrc = '/media/public';
-  $('.curtain').fadeOut('slow');
+
+  $('.curtain').animate({
+    opacity: 0
+  }, 1000, () => {
+    $('.curtain').hide();
+  });
+
   $(document).on('click', '#openMenuButton', openMenu);
 
   const $navList = $('#navList');
   let isOpen = false;
 
   function openMenu(e) {
-    console.log(isOpen);
-    console.log($navList);
     if (!isOpen) {
       isOpen = true;
       $navList.show('fast'); 

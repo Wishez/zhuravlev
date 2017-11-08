@@ -24,7 +24,7 @@ export default class ListItem extends  Component  {
 				<a  
 					href={`/articles/${article.id}`}
 					className='article__toArticle'>
-						Читать дальше&hellip;
+						Хочу больше&hellip;
 				</a>
 			</article>
 		);
