@@ -4,5 +4,5 @@ from .models import *
 class UserAdmin(admin.ModelAdmin):
     horizontal_fields = ('words',)
 
-admin.register(Word)
-admin.register(User, UserAdmin)
+admin.site.register(Word)
+admin.site.register(User, UserAdmin)
