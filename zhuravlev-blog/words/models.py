@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 from django.db import models
-from django.utils.tranlate import gettext_lazy as _
-from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import AbstractBaseUser
 
 class Word(models.Model):
     name = models.CharField(_('Слово'), max_length=20)
@@ -11,11 +11,11 @@ class Word(models.Model):
         verbose_name = _('Слово')
         verbose_name_plural = _('Слова')
 
-class User(AbstractUser):
+class User(AbstractBaseUser):
     words = models.ManyToManyField(
         Word,
-        verbose_name=_('Слово'),
-        related_name='user_words'
+        verbose_name=_('Слова'),
+        related_name='words'
     )
 
     class Meta:
