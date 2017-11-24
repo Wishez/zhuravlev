@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'corsheaders',
     'oauth2_provider',
+    'words',
+    'api_words',
 ]
     # 'oauth2_provider',
 # Application definition
@@ -104,7 +106,7 @@ WSGI_APPLICATION = 'zhuravlev.wsgi.application'
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'zhuravlev_db',
+            'NAME': 'zhuravlev',
             'USER': 'gm',
             'PASSWORD': 'demonstration',
             'HOST': 'localhost',
