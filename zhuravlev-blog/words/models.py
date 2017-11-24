@@ -6,8 +6,16 @@ from django.contrib.auth.models import AbstractBaseUser
 class UserManager(models.Manager):
     use_for_related_fields = True
 
+    # def remove_word(self, word):
+        # self.words.filter(name=word)
+
     def get_words(self):
         words = []
+
+        for word in self.words.all():
+            words.push(word.name)
+
+        return words
 
 
 

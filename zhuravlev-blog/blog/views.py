@@ -17,7 +17,7 @@ class BaseView(TemplateView):
         self.title = 'Филипп Журавлёв'
         self.meta = 'React/Django разработчик Филипп Журавлёв подаёт в своём блоге блюда из своей прктики для приготовления веб-приложений, веб-интерфейсов и всего остального.'
         self.props = {
-            'search': ''
+            "search": ""
         }
         self.isArticle = False
 

@@ -70,3 +70,4 @@ class Year(models.Model):
     class Meta:
         verbose_name = _('Год')
         verbose_name_plural = _('Архив')
+
