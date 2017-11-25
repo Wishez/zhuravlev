@@ -4,9 +4,12 @@ from rest_framework import viewsets
 from .serializers import *
 # Create your views here.
 
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
+class PluginUserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
-    serializer_class = AwesomeUserSerizlier
+    serializer_class = PluginUserSerializer
 
+class DocumentUserViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = DocumentUserDataSerializer
 
 # Create your views here.
