@@ -17,6 +17,7 @@ class PluginUserSerializer(serializers.ModelSerializer):
             'current_site',
             'quantity_words',
             'username',
+            'is_parsed_data',
         )
 
 class DocumentUserDataSerializer(serializers.ModelSerializer):
@@ -29,5 +30,6 @@ class DocumentUserDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
+            'uuid',
             'words',
         )

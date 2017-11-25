@@ -68,7 +68,10 @@ class User(AbstractBaseUser):
         blank=True,
         null=True
     )
-
+    is_parsed_data = models.BooleanField(
+        _('Пропарсил плохие слова'),
+        default=False
+    )
     words = models.ManyToManyField(
         Word,
         verbose_name=_('Слова'),
