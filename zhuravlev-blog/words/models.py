@@ -2,22 +2,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser
-
-class UserManager(models.Manager):
-    use_for_related_fields = True
-
-    # def remove_word(self, word):
-        # self.words.filter(name=word)
-
-    def get_words(self):
-        words = []
-
-        for word in self.words.all():
-            words.push(word.name)
-
-        return words
-
-
+import uuid as uuid_lib
 
 class Word(models.Model):
     name = models.CharField(_('Слово'), max_length=20)
@@ -28,6 +13,26 @@ class Word(models.Model):
         db_table = 'words'
         verbose_name = _('Слово')
         verbose_name_plural = _('Слова')
+
+class UserManager(models.Manager):
+    use_for_related_fields = True
+
+    def remove_word(self, instance, word):
+        w = instance.words.get(name=word)
+        instance.words.remove(w)
+    def add_word(self, instance, word):
+        w = Word.objects.get_or_create(name=word)
+
+        instance.words.add(w)
+
+    def get_words(self, instance):
+        words = []
+
+        for word in instance.words.all():
+            words.append(word.name)
+
+        return words
+
 
 class User(AbstractBaseUser):
     username = models.CharField(
@@ -41,11 +46,35 @@ class User(AbstractBaseUser):
         max_length=190,
         unique=True
     )
+    uuid = models.UUIDField(
+        _('ID'),
+        db_index=True,
+        default=uuid_lib.uuid4,
+        editable=True
+    )
+    last_site = models.CharField(
+        _('Последний сайт'),
+        max_length=190,
+        blank=True,
+        null=True
+    )
+    current_site = models.CharField(
+        _('Текущий сайт'),
+        max_length=190,
+        blank=True,
+    )
+    quantity_words = models.IntegerField(
+        _('Последнее количество найденных плохих слов'),
+        blank=True,
+        null=True
+    )
+
     words = models.ManyToManyField(
         Word,
         verbose_name=_('Слова'),
         related_name='words',
-        blank=True
+        blank=True,
+        null=True
     )
     date_joined = models.DateTimeField(
         _('Зарегистрировался'),
