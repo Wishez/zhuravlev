@@ -18,6 +18,7 @@ class PluginUserSerializer(serializers.ModelSerializer):
             'quantity_words',
             'username',
             'is_parsed_data',
+            'was_gotten_new_domain',
         )
 
 class DocumentUserDataSerializer(serializers.ModelSerializer):

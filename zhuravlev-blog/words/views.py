@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-from django.contrib.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.urls import reverse
 from words.models import User
@@ -9,6 +9,7 @@ class BaseController(View):
     def __init__(self):
         self.user = False
         self.data = False
+        self.userId = None
 
 
     def post_callback(self, request):
@@ -18,6 +19,8 @@ class BaseController(View):
         # Data have current_site, quantity_word, and uuid for getting user.
         self.data = request.POST
         self.user = get_object_or_404(User, uuid=self.data['uuid'])
+        self.userId = self.user.id
+
         return self.post_callback(request)
 
 # Set data about current user position and quantity
@@ -26,24 +29,24 @@ class SetUserStateController(BaseController):
     def post_callback(self, request):
         user = self.user
         data = self.data
-        current_site = data['current_site']
 
-        user.quantity_words = data['quantity_words']
-
-        if current_site != user.last_site:
-            user.last_site = current_site
-            user.current_site = current_site
-
-        user.is_parsed_data = True
+        if "current_site" in data:
+            user.was_gotten_new_domain = True
+            user.current_site = data['current_site']
+        else:
+            user.quantity_words = data['quantity_words']
+            user.is_parsed_data = True
 
         return HttpResponse(True)
 
-
+# Set boolean field of user by default for
+# parsing a next page.
 class ThankYouServerController(BaseController):
     def post_callback(self, request):
         # Cache an user for convenient.
         user = self.user
         user.is_parsed_data = False
+        user.was_gotten_new_domain = False
         user.save()
 
         return HttpResponse(True)

@@ -52,11 +52,10 @@ class User(AbstractBaseUser):
         default=uuid_lib.uuid4,
         editable=True
     )
-    last_site = models.CharField(
+    was_gotten_new_domain = models.BooleanField(
         _('Последний сайт'),
         max_length=190,
-        blank=True,
-        null=True
+        default=False
     )
     current_site = models.CharField(
         _('Текущий сайт'),
