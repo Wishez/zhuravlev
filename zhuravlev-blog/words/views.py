@@ -1,10 +1,12 @@
 # -*- encoding: utf-8 -*-
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, JsonResponse
-from django.urls import reverse
 from words.models import User
 from django.views import View
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
+@method_decorator(csrf_exempt, name='dispatch')
 class BaseController(View):
     def __init__(self):
         self.user = False
@@ -18,7 +20,7 @@ class BaseController(View):
     def post(self, request):
         # Data have current_site, quantity_word, and uuid for getting user.
         self.data = request.POST
-        self.user = get_object_or_404(User, uuid=self.data['uuid'])
+        self.user = get_object_or_404(User, id=self.data['userId'])
         self.userId = self.user.id
 
         return self.post_callback(request)
@@ -59,7 +61,7 @@ class RemoveWordController(BaseController):
         self.user_action = 'remove_word'
     def post_callback(self, request):
         user = self.user
-        # Remove word using user manager.
+        # Remove or add word using user manager.
         getattr(User.objects, self.user_action)(user, self.data['word'])
         # Return array with rest words.
         return JsonResponse(user.words.all())
