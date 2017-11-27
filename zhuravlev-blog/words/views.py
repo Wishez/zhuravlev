@@ -64,10 +64,12 @@ class RemoveWordController(BaseController):
         # Remove or add word using user manager.
         getattr(User.objects, self.user_action)(user, self.data['word'])
         # Return array with rest words.
-        return JsonResponse(user.words.all())
+        return JsonResponse({
+            'words': User.objects.get_words(user)
+        })
 
 class AddWordController(RemoveWordController):
     def __init__(self):
-        super().__init__(self)
+        # super(AddWordController, self).__init__()
         self.user_action = 'add_word'
 
