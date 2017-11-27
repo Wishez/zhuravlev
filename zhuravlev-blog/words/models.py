@@ -75,8 +75,7 @@ class User(AbstractBaseUser):
         Word,
         verbose_name=_('Слова'),
         related_name='words',
-        blank=True,
-        null=True
+        blank=True
     )
     date_joined = models.DateTimeField(
         _('Зарегистрировался'),
