@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from words.models import User
