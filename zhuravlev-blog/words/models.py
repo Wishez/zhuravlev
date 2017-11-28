@@ -4,6 +4,8 @@ from django.contrib.auth.models import BaseUserManager
 
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 import uuid as uuid_lib
 
 class Word(models.Model):
@@ -37,7 +39,13 @@ class UserManager(BaseUserManager):
         return words
 
 
+
 class User(AbstractBaseUser):
+    is_changing_password = models.BooleanField(
+        _('Изменить пароль?'),
+        default=False
+    )
+
     username = models.CharField(
         _('Имя пользователя'),
         max_length=140,
@@ -88,6 +96,7 @@ class User(AbstractBaseUser):
         _('Активный'),
         default=True
     )
+
     objects = UserManager()
     USERNAME_FIELD = 'username'
     def __str__(self):
@@ -96,3 +105,9 @@ class User(AbstractBaseUser):
         db_table = 'liked_users'
         verbose_name = _('Пользователь')
         verbose_name_plural = _('Пользователи')
+
+@receiver(pre_save, sender=User)
+def pre_create_user(sender, instance, **kwargs):
+    if instance.is_changing_password:
+        instance.set_password(instance.password)
+        instance.is_changing_password = False
