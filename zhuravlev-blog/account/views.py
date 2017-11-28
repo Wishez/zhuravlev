@@ -53,32 +53,26 @@ def log_in(request):
         username = data['username']
         password = data['password']
 
-        user = authenticate(
-            request,
-            username=username,
-            password=password
-        )
+        user = User.objects.filter(username=username)
 
-        if user is not None:
-            login(request, user)
-
-            current_user = User.objects.get(id=user.id)
+        if user.exists() and user[0].check_password(password):
+            current_user = user[0]
 
             # Если есть аккаунт, то не факт, что пользователь
             # логинится на нужном сайте. Он, может быть, очень рассееный
             # или же у него случилось что-то плохое и он решил поиграть
             # в какую-нибудь игру, чтобы на время уйти из реальности.
-            if current_user.exists():
-                # There will be an user's avatar in model in future.
 
-                userData = {
-                    'username': current_user.username,
-                    'email': current_user.user.email,
-                    'userId': current_user.id
-                }
-                # Возвращаются данные пользователе
+            # There will be an user's avatar in model in future.
 
-                return JsonResponse(userData)
+            userData = {
+                'username': current_user.username,
+                'email': current_user.email,
+                'userId': current_user.id
+            }
+            # Возвращаются данные пользователе
+
+            return JsonResponse(userData)
      # Не удалось залогинисться.
     return HttpResponse(_('Логин или пароль не верны'))
 
