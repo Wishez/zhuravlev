@@ -14,15 +14,16 @@ class Word(models.Model):
         verbose_name = _('Слово')
         verbose_name_plural = _('Слова')
 
-class UserManager(models.Manager):
+class UserManager(models.UserManager):
     use_for_related_fields = True
 
     def remove_word(self, instance, word):
         w = instance.words.get(name=word)
         instance.words.remove(w)
     def add_word(self, instance, word):
-        w = Word.objects.get_or_create(name=word)
-
+        w, is_created = Word.objects.get_or_create(name=word)
+        if not is_created:
+            w.save()
         instance.words.add(w)
 
     def get_words(self, instance):
