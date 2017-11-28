@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^api/v0/', include('api_v0.urls')),
     url(r'^words/', include('words.urls')),
     url(r'^getMe/', include('api_words.urls')),
+    url(r'^account/', include('account.urls')),
 ] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

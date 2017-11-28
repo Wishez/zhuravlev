@@ -25,7 +25,7 @@ SECRET_KEY = '3v($d0%a0#5oc04_jkwwnxlq@dhqvl@)oaje9rf0(5$=h3!89@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['filipp-zhuravlev.ru', 'www.filipp-zhuravlev.ru', 'localhost', '127.0.0.1', '46.138.98.62']
+ALLOWED_HOSTS = ['filipp-zhuravlev.ru', 'www.filipp-zhuravlev.ru', 'localhost', '127.0.0.1', '46.138.98.62', 'testserver']
 
 
 INSTALLED_APPS = [
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'words',
     'api_words',
+    'account',
 ]
     # 'oauth2_provider',
 # Application definition
