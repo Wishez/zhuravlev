@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
 from django.db import models
+from django.contrib.auth.models import BaseUserManager
+
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser
 import uuid as uuid_lib
@@ -14,7 +16,7 @@ class Word(models.Model):
         verbose_name = _('Слово')
         verbose_name_plural = _('Слова')
 
-class UserManager(models.UserManager):
+class UserManager(BaseUserManager):
     use_for_related_fields = True
 
     def remove_word(self, instance, word):

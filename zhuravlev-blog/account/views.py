@@ -2,7 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from words.models import User
 from django.views.decorators.csrf import csrf_exempt
-from django.utils.translate import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 @csrf_exempt
 def register(request):
