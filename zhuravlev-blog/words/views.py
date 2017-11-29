@@ -18,8 +18,9 @@ class BaseController(View):
 
     def post(self, request):
         # Data have current_site, quantity_word, and uuid for getting user.
-        self.uuid = self.data['uuid']
+
         self.data = request.POST
+        self.uuid = self.data['uuid']
         self.user = get_object_or_404(User, uuid=self.uuid)
 
         return self.post_callback(request)
