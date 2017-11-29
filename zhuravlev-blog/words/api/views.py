@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework.generics import RetrieveUpdateDestroyAPIView, RetrieveAPIView
 from .serializers import *
 # Create your views here.
