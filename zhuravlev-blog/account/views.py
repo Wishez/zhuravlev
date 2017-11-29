@@ -57,6 +57,10 @@ def log_in(request):
 
         if user.exists() and user[0].check_password(password):
             current_user = user[0]
+            login(
+                request,
+                current_user
+            )
 
             # Если есть аккаунт, то не факт, что пользователь
             # логинится на нужном сайте. Он, может быть, очень рассееный
@@ -68,7 +72,7 @@ def log_in(request):
             userData = {
                 'username': current_user.username,
                 'email': current_user.email,
-                'userId': current_user.id
+                'uuid': current_user.uuid
             }
             # Возвращаются данные пользователе
 
@@ -85,10 +89,10 @@ def change_password(request):
     if request.method == 'POST':
         data = request.POST
         # Получаем имя пользователя и пароль,
-        userId = data['userId']
+
         oldPassword = data['oldPassword']
         newPassword = data['newPassword']
-        user = User.objects.get(id=userId)
+        user = User.objects.get(id=data['uuid'])
 
         # На стороне клиента проходит валидация
         # старого пароля.
@@ -111,12 +115,12 @@ def change_email(request):
     if request.method == 'POST':
         data = request.POST
         # Получаем имя пользователя, пароль и новый email.
-        userId = data['userId']
+
 
         oldPassword = data['password']
         newEmail = data['newEmail']
 
-        user = User.objects.get(id=userId)
+        user = User.objects.get(id=data['uuid'])
 
         # На стороне клиента проходит валидация
         # старого пароля.
@@ -143,14 +147,18 @@ def change_email(request):
 #         data = request.POST
 #         # Получаем имя пользователя, пароль и новый email.
 #         quantity_monthes = data['quantityMonthes']
-#         userId = data['userId']
-#         user = User.objects.get(username=userId)
+
+#         user = User.objects.get(username=data['uuid'])
 
 
         # return JsonResponse(user.subscribe(quantity_monthes))
     # Ошибка сервера?
     # return HttpResponse('Не удалось подписаться на сервер')
 
+# Will change the function's logic. When the user will make request
+# to change his password, he will get a code in his email, then
+# he could type that code into input field and successfully changing
+# his password.
 
 @csrf_exempt
 def recover_password(request):
@@ -177,9 +185,9 @@ def recover_password(request):
 #     if request.method == 'POST' and request.FILES['newAvatar']:
 #         data =  request.POST
 #         avatar = request.FILES['newAvatar']
-#         userId = data['userId']
+
 #
-#         user = User.objects.get(id=userId)
+#         user = User.objects.get(id=data['uuid'])
 #
 #         user.avatar.save('user_avatar', avatar)
 #         user.save()

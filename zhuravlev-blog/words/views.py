@@ -11,17 +11,16 @@ class BaseController(View):
     def __init__(self):
         self.user = False
         self.data = False
-        self.userId = None
-
+        self.uuid = None
 
     def post_callback(self, request):
         pass
 
     def post(self, request):
         # Data have current_site, quantity_word, and uuid for getting user.
+        self.uuid = self.data['uuid']
         self.data = request.POST
-        self.user = get_object_or_404(User, id=self.data['userId'])
-        self.userId = self.user.id
+        self.user = get_object_or_404(User, uuid=self.uuid)
 
         return self.post_callback(request)
 
