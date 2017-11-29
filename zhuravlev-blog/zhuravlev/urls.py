@@ -9,7 +9,6 @@ urlpatterns = [
     url(r'', include('blog.urls')),
     url(r'^api/v0/', include('api_v0.urls')),
     url(r'^words/', include('words.urls')),
-    url(r'^getMe/', include('api_words.urls')),
     url(r'^account/', include('account.urls')),
 ] 
 
