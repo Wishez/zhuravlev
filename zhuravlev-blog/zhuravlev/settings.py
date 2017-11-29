@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'oauth2_provider',
     'words',
-    'api_words',
     'account',
 ]
     # 'oauth2_provider',
