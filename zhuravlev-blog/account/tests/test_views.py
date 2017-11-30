@@ -1,3 +1,4 @@
+# -*- encode: utf-8 -*-
 from django.test import TestCase
 from django.urls import reverse
 from words.models import User
@@ -40,7 +41,18 @@ class AccountAPI(TestCase):
         })
 
         self.assertEquals(response.status_code, 200)
+    def test_success_register(self):
+        self.assertEquals(self.register_url, '/account/register/')
+        resp = self.client.post(self.register_url, {
+            "password":"demonstration",
+            "username": "mr_register",
+            "repeatedPassword":
+            "demonstration","email": "registration@yandex.ru"
+        })
 
+        data = json.loads(resp.content)
+        self.assertEquals(resp.status_code, 200)
+        self.assertEquals(len(data), 2)
 
 
 
