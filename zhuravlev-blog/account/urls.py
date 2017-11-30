@@ -7,5 +7,5 @@ urlpatterns = [
     url(r'^log_out/$', log_out, name='log_out'),
     url(r'^change_email/$', change_email, name='change_password'),
     url(r'^change_password/$', change_password, name='change_email'),
-    url(r'^change_email/$', recover_password, name='recover_password'),
+    url(r'^recover_password/$', recover_password, name='recover_password'),
 ]
