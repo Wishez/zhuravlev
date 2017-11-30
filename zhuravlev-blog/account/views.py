@@ -8,15 +8,18 @@ from django.utils.translation import gettext_lazy as _
 @csrf_exempt
 def register(request):
     if request.method == 'POST':
-
+        response = {
+            "is_registered": False,
+            "message": ''
+        }
         data = request.POST
-
         password = data['password']
         repeated_password = data['repeatedPassword']
         # Проверяем тождество паролей, после чего либо работа продолжается,
         # либо пользователь пойдёт отождествлять пароли.
         if password != repeated_password:
-            return HttpResponse(_('Пароли не совпадают'))
+            response["message"] = _('Пароли не совпадают')
+            return JsonResponse(response)
         username = data['username']
         email = data['email']
 
@@ -24,9 +27,11 @@ def register(request):
         if User.objects.filter(username=username).exists():
             # Если есть пользователь с таким именем,
             # возвращается уведомление об этом.
-            return HttpResponse(_('Пользователь с таким именем пользователя уже существует'))
+            response["message"] = _('Пользователь с таким именем пользователя уже существует')
+            return JsonResponse(response)
         elif User.objects.filter(email=email).exists():
-            return HttpResponse(_('Пользователь с таким email-ом уже существует'))
+            response["message"] = _('Пользователь с таким email-ом уже существует')
+            return JsonResponse(response)
         else:
             # Регистрируется один пользователь
             user = User(
@@ -42,9 +47,13 @@ def register(request):
             # subject =  'Успешная регистрация'
             # user.email_user(subject, message)
             # Возвращается ответ об успешной регистрации.
-            return HttpResponse(_('Вы успешно прошли регистрацию'))
+            response["message"] = _('Вы успешно прошли регистрацию')
+            response["is_registered"] = True
+            return JsonResponse(response)
             # Посылается сообщение об успехе на почту
-        return HttpResponse('Что-то пошло не так...')
+        response["message"] = _('Что-то пошло не так...')
+
+        return JsonResponse(response)
 
 def log_in(request):
     if request.method == 'GET':
