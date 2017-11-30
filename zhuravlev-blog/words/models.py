@@ -22,8 +22,11 @@ class UserManager(BaseUserManager):
     use_for_related_fields = True
 
     def remove_word(self, instance, word):
-        w = instance.words.get(name=word)
-        instance.words.remove(w)
+
+        w = instance.words.filter(name=word)
+        if w.exists():
+            instance.words.remove(w[0])
+
     def add_word(self, instance, word):
         w, is_created = Word.objects.get_or_create(name=word)
         if not is_created:
