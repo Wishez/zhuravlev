@@ -94,12 +94,8 @@ gulp.task('js', () => {
       transform: ['hbsfy', 'envify'], 
       entries: settings.src + '/js/main.js',
       debug: false
-      //plugin: [collapse]
     })
     .transform("babelify", prodBabelOptions)
-    //.transform("uglifyify", {
-     // global: true
-    //})
     .bundle()
     .pipe(source('main.js'))
     .pipe(buffer())
@@ -185,7 +181,7 @@ gulp.task('styles', () => {
 /* CacheApp
 /* ----------------- */
 
-gulp.task('manifest', () => {
+gulp.task('cache-app', () => {
   gulp.src(settings.build + '/**/*')
     .pipe(manifest({
       hash: true,
@@ -196,6 +192,13 @@ gulp.task('manifest', () => {
     }))
     .pipe(gulp.dest(settings.build));
 });
+
+gulp.task('manifest', () => {
+  gulp.src(settings.build + '/manifest.json')
+    .pipe(gulp.dest(settings.build));
+});
+
+
 
 /* ----------------- */
 /* Images
@@ -253,6 +256,7 @@ gulp.task('watch', () => {
   gulp.watch(settings.src + '/img/**/*.*', ['fastimages']);
   gulp.watch(settings.src + '/**/*.pug', ['html']);
   gulp.watch(settings.src + '/**/*.js', ['fastscripts']);
+  gulp.watch(settings.src + '/manifest.json', ['manifest']);
 });
 gulp.task('serve', () => {
     browserSync.init({
@@ -265,7 +269,7 @@ gulp.task('serve', () => {
   });
 });
 
-gulp.task('fastbuild', ['fastscripts', 'faststyles', 'fastmedia', 'html']);
-gulp.task('build', ['scripts', 'styles',  'media', 'manifest', 'html']);
+gulp.task('fastbuild', ['fastscripts', 'faststyles', 'fastmedia', 'html', 'manifest']);
+gulp.task('build', ['scripts', 'styles',  'media', 'manifest', 'cache-app', 'html']);
 gulp.task('default', ['fastbuild', 'watch']); 
 gulp.task('deploy', ['build']); 

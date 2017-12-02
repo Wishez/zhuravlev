@@ -16,7 +16,10 @@ html.no-js(lang="ru", manifest="{% static 'zhuravlev/app.manifest' %}")
 
     | {% block title %}
     | {% endblock %}
-    
+    link(
+      rel="manifest", 
+      href="{% static 'zhuravlev/manifest.json' %}"
+    )
     link(
         rel="shortcut icon", 
         type="image/x-icon", 
