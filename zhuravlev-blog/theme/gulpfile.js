@@ -124,6 +124,7 @@ gulp.task('component', () => {
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(settings.build + '/components'));
 });
+
 gulp.task('fastcomponent', () => {
   process.env.NODE_ENV = 'development';
 
@@ -143,8 +144,43 @@ gulp.task('fastcomponent', () => {
 });
 
 
-gulp.task('fastscripts', ['fastjs', 'fastcomponent']);
-gulp.task('scripts', ['js', 'component']);
+gulp.task('serviceworker', () => {
+  process.env.NODE_ENV = 'development';
+
+  return browserify({
+      transform: ['hbsfy'],
+      entries: settings.src + '/js/sw.js',
+      debug: true
+    })
+    .transform("babelify", devBabelOptions)
+    .bundle()
+    .pipe(source('sw.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(settings.build + '/'));
+});
+
+gulp.task('serviceworker-min', () => {
+  process.env.NODE_ENV = 'production';
+
+  return browserify({
+      transform: ['hbsfy'],
+      entries: settings.src + '/js/sw.js',
+      debug: true
+    })
+    .transform("babelify", devBabelOptions)
+    .bundle()
+    .pipe(source('sw.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init())
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(settings.build + '/'));
+});
+
+gulp.task('fastscripts', ['fastjs', 'fastcomponent', 'serviceworker']);
+gulp.task('scripts', ['js', 'component', 'serviceworker-min']);
 
 /* ----------------- */
 /* SASS
