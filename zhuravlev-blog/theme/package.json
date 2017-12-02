@@ -1,13 +1,11 @@
 {
-  "name": "My Blog",
-  "version": "1.0.0",
-  "description": "",
+  "name": "Filipp Zhuravlev's blog",
+  "version": "2.0.0",
+  "description": "The blog for sharing of knowlage with people.",
   "author": "Filipp Zhuravlev",
   "license": "ISC",
   "private": true,
-  "scripts": {
-    "install": "bower install"
-  },
+  "homepage": "https://github.com/Wishez/zhuravlev",
   "browserify": {
     "transform": [
       "browserify-shim"
