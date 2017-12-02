@@ -124,7 +124,16 @@ html.no-js(lang="ru", manifest="{% static 'zhuravlev/app.manifest' %}")
       ga('create', 'UA-103835197-2', 'auto');  
       ga('send', 'pageview');
 
-
+    script.
+      if ('serviceWorker' in navigator) {
+        console.log("Will the service worker register?");
+        navigator.serviceWorker.register("{% static '/zhuravlev/js/service-worker.js' %}")
+          .then(function(reg){
+            console.log("Yes, it did.");
+          }).catch(function(err) {
+            console.log("No it didn't. This happened: ", err)
+          });
+      }
     script(async, src="{% static 'zhuravlev/js/main.js' %}", type="application/javascript")
     link(
         rel="stylesheet",
