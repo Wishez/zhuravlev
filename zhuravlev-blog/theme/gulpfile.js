@@ -32,7 +32,12 @@ const gulp = require('gulp'),
       path = require('path'),
       notify = require('gulp-notify'),
       gulpIf = require('gulp-if'),
-      combine = require('gulp-combine');
+      combine = require('gulp-combine'),
+      HardSourceWebpackPlugin = require('hard-source-webpack-plugin'),
+      ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin'),
+      HappyPack = require('happypack'),
+      CompressionPlugin = require("compression-webpack-plugin")
+
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
@@ -63,9 +68,11 @@ scssPathes = ['node_modules/susy/sass',
 /* Scripts
 /* ----------------- */
 gulp.task('webpack', () => {
+  process.env.NODE_ENV = 'production';
+
   let options = {
     watch: isDevelopment,
-    devtool: isDevelopment ? 'cheap-module-inline-source-map' : null,
+    devtool: 'cheap-module-inline-source-map',
     module: {
       loaders: [{
         loader: 'babel-loader',
@@ -80,7 +87,35 @@ gulp.task('webpack', () => {
       }]
     },
     plugins: [
-      new webpack.NoEmitOnErrorsPlugin()
+      new webpack.NoEmitOnErrorsPlugin(),
+      new ParallelUglifyPlugin({
+        uglifyJS: {}
+      }),
+      new CompressionPlugin({
+         test: /\.js/
+      }),
+      new webpack.DefinePlugin({
+        cutCode: JSON.stringify(true),
+        'process.env.NODE_ENV': JSON.stringify('production')
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        children: true,
+        async: true
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        beautify: false,
+        comments: false,
+        compress: {
+            sequences     : true,
+            booleans      : true,
+            loops         : true,
+            unused      : true,
+            warnings    : false,
+            drop_console: true,
+            unsafe      : true
+        }
+      }),
+      new webpack.optimize.OccurrenceOrderPlugin()
     ]
   };
 
@@ -93,7 +128,7 @@ gulp.task('webpack', () => {
     }))
     .pipe(named())
     .pipe(webpackStream(options))
-    .pipe(gulpIf(!isDevelopment, uglify()))
+    .pipe(gulpIf(isDevelopment, uglify()))
     .pipe(gulp.dest(`./build/js`))
 });
 const devBabelOptions = {
@@ -333,7 +368,7 @@ gulp.task('watch', () => {
   gulp.watch(settings.src + '/**/*.scss', ['faststyles']);
   gulp.watch(settings.src + '/img/**/*.*', ['fastimages']);
   gulp.watch(settings.src + '/**/*.pug', ['html']);
-  gulp.watch(settings.src + '/**/*.js', ['fastscripts']);
+  gulp.watch(settings.src + '/**/*.js', ['webpack']);
   gulp.watch(settings.src + '/manifest.json', ['manifest']);
 });
 gulp.task('serve', () => {
