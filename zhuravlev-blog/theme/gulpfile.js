@@ -24,9 +24,17 @@ const gulp = require('gulp'),
       glob = require('glob'),
       envify = require('envify/custom'),
       manifest = require('gulp-manifest'),
-      jshint = require('gulp-jshint');
+      jshint = require('gulp-jshint'),
+      webpackStream = require('webpack-stream'),
+      webpack = webpackStream.webpack,
+      plumber = require('gulp-plumber'),
+      named = require('vinyl-named'),
+      path = require('path'),
+      notify = require('gulp-notify'),
+      gulpIf = require('gulp-if'),
+      combine = require('gulp-combine');
 
-
+const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
 const hbsfy = require('hbsfy').configure({
   extensions: ['html']
@@ -54,6 +62,40 @@ scssPathes = ['node_modules/susy/sass',
 /* ----------------- */
 /* Scripts
 /* ----------------- */
+gulp.task('webpack', () => {
+  let options = {
+    watch: isDevelopment,
+    devtool: isDevelopment ? 'cheap-module-inline-source-map' : null,
+    module: {
+      loaders: [{
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'react'],
+          plugins: ['react-html-attrs',
+          'transform-class-properties',
+          'transform-decorators-legacy',
+          'transform-object-rest-spread']
+        }
+      }]
+    },
+    plugins: [
+      new webpack.NoEmitOnErrorsPlugin()
+    ]
+  };
+
+  return gulp.src(`${settings.src}/js/*.js`)
+    .pipe(plumber({
+      errorHandler: notify.onError(err => ({
+        title: 'Webpack',
+        message: err.message
+      }))
+    }))
+    .pipe(named())
+    .pipe(webpackStream(options))
+    .pipe(gulpIf(!isDevelopment, uglify()))
+    .pipe(gulp.dest(`./build/js`))
+});
 const devBabelOptions = {
   plugins: ['react-html-attrs',
    'transform-class-properties',
@@ -305,7 +347,7 @@ gulp.task('serve', () => {
   });
 });
 
-gulp.task('fastbuild', ['fastscripts', 'faststyles', 'fastmedia', 'html', 'manifest']);
-gulp.task('build', ['scripts', 'styles',  'media', 'manifest', 'cache-app', 'html']);
+gulp.task('fastbuild', ['webpack', 'faststyles', 'fastmedia', 'html', 'manifest']);
+gulp.task('build', ['webpack', 'styles',  'media', 'manifest', 'cache-app', 'html']);
 gulp.task('default', ['fastbuild', 'watch']); 
 gulp.task('deploy', ['build']); 
