@@ -145,4 +145,4 @@ const view = () => {
 };
 
 store.subscribe(view);
-view();
+export default view;

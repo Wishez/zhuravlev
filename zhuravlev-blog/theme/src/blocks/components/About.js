@@ -25,4 +25,6 @@ class About extends Component{
 	}
 }
 
-render(React.createElement(About, window.props), window.react_mount);
+export default function view() {
+	render(React.createElement(About, window.props), window.react_mount);	
+};

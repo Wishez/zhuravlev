@@ -22,4 +22,6 @@ class Connect extends Component{
 	} 
 }
 
-render(React.createElement(Connect, window.props), window.react_mount);
+export default function view() {
+	render(React.createElement(Connect, window.props), window.react_mount);
+};

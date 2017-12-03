@@ -11,7 +11,7 @@ import { setData, getData } from '../constants/localStorage.js';
 
 const store = configureStore();
 
-export default class Article extends Component {
+class Article extends Component {
 	componentDidMount() {
 		this.props.loadArticle();
 		setData('article', [{}]);
@@ -56,4 +56,5 @@ const view = () => {
 	render(React.createElement(Article, window.props), window.react_mount);
 };
 store.subscribe(view);
-view();
+
+export default view;
