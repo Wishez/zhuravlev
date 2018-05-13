@@ -5,7 +5,7 @@
 ***********/
 
 import 'jquery';
-import 'bootstrap-sass';
+// import 'bootstrap-sass';
 import 'babel-polyfill';
 import 'whatwg-fetch';
 // import './modernizr.min.js';

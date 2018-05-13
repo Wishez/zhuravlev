@@ -8,18 +8,49 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 import uuid as uuid_lib
 
+
+class TimeStampedModel(models.Model):
+    created = models.DateTimeField(_('Созданна'), auto_now_add=True)
+    modified = models.DateTimeField(_('Последнее редактирование'), auto_now=True)
+
+    class Meta:
+        abstract = True
 class Word(models.Model):
-    name = models.CharField(_('Слово'), max_length=20)
+    word_name = models.CharField(_('Слово'), max_length=20)
 
     def __str__(self):
-        return self.name
+        return self.word_name
     class Meta:
         db_table = 'words'
         verbose_name = _('Слово')
         verbose_name_plural = _('Слова')
 
+class UserDomain(TimeStampedModel):
+    domain_name = models.CharField(
+        _('Доменное имя'),
+        max_length=250
+    )
+
+    def __str__(self):
+        return self.domain_name
+    class Meta:
+        db_table = 'restricted_domains'
+        verbose_name = _('Доменное имя')
+        verbose_name_plural = _('Доменные имена')
+
 class UserManager(BaseUserManager):
     use_for_related_fields = True
+    def remove_domain(self, instance, domain):
+
+        user_domain = instance.user_domains.filter(name=domain)
+        if user_domain .exists():
+            instance.words.remove(domain[0])
+
+    def add_domain(self, instance, domain):
+        user_domain, is_created = Word.objects.get_or_create(name=domain)
+        if not is_created:
+            user_domain.save()
+        instance.user_domain.add(domain)
 
     def remove_word(self, instance, word):
 
@@ -33,13 +64,8 @@ class UserManager(BaseUserManager):
             w.save()
         instance.words.add(w)
 
-    def get_words(self, instance):
-        words = []
-
-        for word in instance.words.all():
-            words.append(word.name)
-
-        return words
+    def get_m2m_array(self, instance, m2m_relation_name):
+        return [entity for entity in getattr(instance, m2m_relation_name)]
 
 
 
@@ -76,6 +102,18 @@ class User(AbstractBaseUser):
         max_length=190,
         blank=True,
     )
+    allowed_quantity_words = models.IntegerField(
+        _('Ограничение количество добавленных слов'),
+        default=15,
+    )
+    balance = models.DecimalField(
+        _('Баланс пользователя'),
+        default=0,
+        decimal_places=2,
+        max_digits=7,
+        blank=True,
+        null=True
+    )
     quantity_words = models.IntegerField(
         _('Последнее количество найденных плохих слов'),
         blank=True,
@@ -85,19 +123,38 @@ class User(AbstractBaseUser):
         _('Пропарсил плохие слова'),
         default=False
     )
+
     words = models.ManyToManyField(
         Word,
         verbose_name=_('Слова'),
         related_name='words',
         blank=True
     )
+
+    user_domains = models.ManyToManyField(
+        UserDomain,
+        verbose_name=_('Доменные имена'),
+        related_name='user_allowed_domains',
+        blank=True
+    )
     date_joined = models.DateTimeField(
         _('Зарегистрировался'),
         auto_now_add=True
     )
+    modified = models.DateTimeField(
+        _('Последняя активность'),
+        auto_now=True
+    )
     is_active = models.BooleanField(
         _('Активный'),
         default=True
+    )
+
+    temporary_code = models.CharField(
+        _('Временный код для восстановления пароля'),
+        max_length=6,
+        null=True,
+        blank=True
     )
 
     objects = UserManager()

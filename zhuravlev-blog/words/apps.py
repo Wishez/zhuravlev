@@ -4,4 +4,4 @@ from django.utils.translation import gettext_lazy as _
 
 class WordsConfig(AppConfig):
     name = 'words'
-    verbose_name=_('Пользователи')
+    verbose_name=_('Noise Suppressor')

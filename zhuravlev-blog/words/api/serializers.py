@@ -19,6 +19,7 @@ class PluginUserSerializer(serializers.ModelSerializer):
             'username',
             'is_parsed_data',
             'was_gotten_new_domain',
+            'allowed_quantity_words',
         )
 
 class DocumentUserDataSerializer(serializers.ModelSerializer):
@@ -33,4 +34,5 @@ class DocumentUserDataSerializer(serializers.ModelSerializer):
         fields = (
             'uuid',
             'words',
+            'user_domains',
         )

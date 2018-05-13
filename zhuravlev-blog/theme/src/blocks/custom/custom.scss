@@ -140,9 +140,10 @@ body {
 }
 
 h5 {
-  @extend %fs18;
+  @extend %fs21;
   @extend %bold;
   margin-top: 2em !important;
+  color: #bbb;
 }
 
 a {
