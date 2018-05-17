@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load blog_filters %}
+{% block title %}<title>{{ title }}</title>{% endblock %} 
+{% block nav %}<nav class="navigaton"><button class="navigation__openMenuButton visible-xs" id="openMenuButton"><span class="sr-only">Toggle navigation</span><i class="fa fa-bars fa-2x"></i></button><ul class="navList" id="navList"><li class="navItem"><a class="navItem__refer" href="{% url 'index' %}">Блог</a></li><li class="navItem"><a class="navItem__refer" href="{% url 'connect' %}">Контакты</a></li><li class="navItem"><a class="navItem__refer not-follow" href="http://shining-present.tw1.ru">Портфолио</a></li><li class="navItem"><a class="navItem__refer" href="{% url 'about' %}">Обо мне</a></li><li class="navItem"><a class="navItem__refer" href="{% url 'archive' %}">Архив   </a></li></ul></nav>{% endblock %}
+{% block content %}<main id="main" style="display: none;"><div class="ui big text inline loader">Загрузка&elliph;</div></main><script>window.props = {{props|json}};
+window.react_mount = document.getElementById('main');
+</script><script src="/media/public/components/NotFound.js"></script>{% endblock %}

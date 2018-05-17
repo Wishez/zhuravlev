@@ -1,0 +1,18 @@
+.logo {
+  @include span(8);
+  & .navbar-brand {
+    padding: 0;
+  }
+  &, .navbar-brand {
+    @include breakpoint($xs) {
+      width: span(12);
+      float: none;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+  
+}
+
+
+@import '__name.scss';

@@ -1,0 +1,5 @@
+.article__date {
+	color: $gray;
+	font-style: italic;
+	@extend %increasedMarginTop;
+}

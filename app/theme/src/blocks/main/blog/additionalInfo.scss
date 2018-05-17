@@ -1,0 +1,17 @@
+.asideInfo {
+	width: span(4);
+	@extend %floatRight;
+	@include breakpoint($xs) {
+		width: span(12);
+	}
+}
+
+.asideInfo__tags .label{
+	@extend %defaultMarginTop;
+	margin-right: 0.5em;
+}
+
+.asideInfo__showAllArticles {
+	@extend %importantButton;
+}
+

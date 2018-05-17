@@ -1,0 +1,25 @@
+.footer {
+  @extend .header;
+  min-height: 759px;
+  background-image: url('../img/footer-background.jpg');
+  z-index: 0;
+  &::after {
+    background: $darkGreen;
+  }
+  color: $yellow;
+  & .logo {
+    min-width: 422px;
+    width: span(4);
+    margin: 0 auto;
+    float: none;
+    @include breakpoint($xs) {
+      min-width: 310px;
+      width: span(3);
+      margin-top: 90px;
+    }
+  }
+}
+
+@import 'contacts/contacts.scss';
+@import 'services/services.scss';
+@import 'border.scss';

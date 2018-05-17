@@ -1,0 +1,74 @@
+.header {
+  background: url('../img/header-background.jpg') center no-repeat;
+  background-size: cover;
+  position: relative;
+  min-height: 568px;
+  z-index: 1;
+  padding-top: (50% / 568) * 100;
+  @include breakpoint($lg) {
+      padding-top: (30% / 568) * 100;
+  }
+  @include breakpoint($xs) {
+    min-height: 580px;    
+    padding-top: 0;
+  }
+  
+  &::after {
+    z-index: -2;
+    content: '';
+    background: linear-gradient(to bottom, $lightGreen 0%, $darkGreen 50%, $red 105%) center no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    opacity: .6;
+  }
+}
+
+.search, .logo {
+  @include breakpoint($xs) {
+    width: span(12);
+  }
+}
+.logo, .slogan {
+  @include breakpoint($xs) {
+    margin-top: 110px;
+  }
+}
+#searchForm, .logo__name {
+  position: relative;
+  z-index: 0;
+  @include breakpoint($xs) {
+    margin: 0 auto;
+  }
+}
+// Cirles
+#searchForm::before, .logo__name::before {
+  content: '';
+  position: absolute;
+  width: 108px;
+  height: 108px;
+  background-color: $red;
+  @include round;
+  z-index: -1;
+  @include breakpoint($xs) {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+.header__navbar {
+  background-color: transparent;
+  border: 0;
+  .navbar__navContent {
+    @include breakpoint($xxs) {
+      display: flex;
+      flex-flow: column nowrap;
+    }    
+  }
+}  
+
+@import 'logo/logo.scss';
+@import 'search/search.scss';
+@import 'navigation/navigation.scss';
+@import 'slogan/slogan.scss';

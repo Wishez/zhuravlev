@@ -1,0 +1,36 @@
+.logo__name {
+  color: #fff;
+  font: {
+    family: $stackInglobal;
+    size: (50em / 16);
+    weight: bold;
+    style: italic;
+  }
+  text-shadow: -4px 0 0 darken($red, 15%);
+  @include breakpoint($xs) {
+    width: 80%;  
+    min-width: 297px;
+    margin: 0 auto;
+    font-size: 2.2em;
+  }
+  @include breakpoint($xxs) {
+    min-width: 270px;
+    font-size: 2em;
+  }
+  &::before {
+    top: -45%;
+    left: -7%;
+    @include breakpoint($sm) {
+      top: -40%;
+      left: -5%;
+    }
+    @include breakpoint($xs) {
+      top: -50%;
+      left: -5%;
+    }
+    @include breakpoint($xxs) {
+      top: -60%;
+      left: -6%;
+    }
+  }
+}

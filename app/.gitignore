@@ -1,0 +1,6 @@
+__pycache__
+.idea
+admin
+rest_framework
+grappelli
+.env

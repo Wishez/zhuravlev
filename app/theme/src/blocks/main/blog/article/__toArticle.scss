@@ -1,0 +1,9 @@
+.article__toArticle {
+	@extend %defaultTrasitionColor;
+	@include span(last 3 of 12);
+	@extend %bigMarginTop;
+	@extend .text-right;
+	@include breakpoint($xs) {
+		width: span(12);
+	}
+}

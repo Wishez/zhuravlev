@@ -1,0 +1,36 @@
+| {% extends 'base.html' %}
+| {% load blog_filters %}
+
+| {% block title %}
+title {{ title }}
+| {% endblock %} 
+
+| {% block nav %}
+nav.navigaton
+  button#openMenuButton.navigation__openMenuButton.visible-xs
+    span.sr-only Toggle navigation
+    i.fa.fa-bars.fa-2x
+  ul.navList#navList
+    li.navItem
+      a.navItem__refer(href="{% url 'index' %}") Блог
+    li.navItem
+      a.navItem__refer(href="{% url 'connect' %}") Контакты
+    li.navItem
+      a.navItem__refer.not-follow(href='http://shining-present.tw1.ru') Портфолио
+    li.navItem
+      a.navItem__refer(href="{% url 'about' %}") Обо мне
+    li.navItem
+      a.navItem__refer(href="{% url 'archive' %}") Архив   
+| {% endblock %}
+| {% block content %}
+
+
+main#main(style='display: none')
+  .ui.big.text.inline.loader Загрузка&elliph;
+  
+script.
+  window.props = {{props|json}};
+  window.react_mount = document.getElementById('main');
+
+script(src='/media/public/components/NotFound.js')
+| {% endblock %}

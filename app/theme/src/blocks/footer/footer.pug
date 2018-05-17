@@ -1,0 +1,49 @@
+footer
+	.footer 
+		.container 
+			.navContent__logo.logo.navbar-header
+				#logo 
+					a.navbar-brand(href="{% url 'index' %}")
+						h1.logo__name Filipp Zhuravlev 
+			section.contacts
+				h3.contacts__title Контакты
+				ul.contactsStock
+					li.contactsStock__item
+						a(href='mailto:shiningfinger@list.ru')
+							i.fa.fa-envelope-o.fa-1x
+							span shiningfinger@list.ru
+					li.contactsStock__item
+						script(src="https://secure.skypeassets.com/i/scom/js/skype-uri.js")
+						a.not-follow#call_shiningfinger(href='skype:shiningfinger?chat')
+							i.fa.fa-skype.fa-1x
+							span Пишите в скайп
+			section.services
+				h3.services__title Услуги
+				
+				ul.servicesStock
+					li.servicesStock__item
+						i.fa.fa-circle-o
+						| Персональный сайт на Django
+					li.servicesStock__item
+						i.fa.fa-circle-o
+						| Разработка дизайна
+					li.servicesStock__item
+						i.fa.fa-circle-o
+						| Интернет-магазин на Django
+					li.servicesStock__item
+						i.fa.fa-circle-o
+						| Адаптивная вёрстка
+					li.servicesStock__item
+						i.fa.fa-circle-o
+						| Landing page на Django
+					li.servicesStock__item
+						i.fa.fa-circle-o
+						| Поддержка сайта
+	section.border.text-center
+		.container
+			.socials
+				a.not-follow(href='https://github.com/Wishez')
+					i.fa.fa-github.fa-2x
+				a.not-follow(href='https://vk.com/shining_finger')
+					i.fa.fa-vk.fa-2x
+			.copyright &copy;&thinsp;2017 Филипп Журавлёв &ndash; создание сайтов на Django

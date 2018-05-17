@@ -1,0 +1,43 @@
+.navItem__refer {
+  width: 100%;
+  padding: ((32% / 49) * 10) 0 0 ((170% / 233) * 10);
+  background-color: $red;
+  color: $yellow !important;
+  font-weight: bold;
+  display: block;
+  transition: color 0.5s;
+  position: relative;
+  z-index: 0;
+  min-height: 49px;
+  @include breakpoint($sm) {
+     padding-top: ((40% / 49) * 10);
+  }
+  @include breakpoint(max-width 992px) {
+    min-height: 44px;
+  }
+  @include breakpoint($xs) {
+    background-color: transparent;
+    padding: ((10% / 49) * 10) 0 0 0;
+  }
+  @include breakpoint($xxs) {
+    padding-top: ((15% / 49) * 10);
+  }
+  
+  &::after {
+    content: '';
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $yellow;
+    transition: width 1s;
+    z-index: -1;
+  }
+  &:hover {
+    color: $red !important;
+    &::after{
+      width: 100%;
+    }
+  }
+}
