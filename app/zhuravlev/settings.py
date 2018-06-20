@@ -45,25 +45,6 @@ PROJECT_APPS = [
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
-# INSTALLED_APPS = [
-#     'disqus',
-#     'grappelli',
-#     'django.contrib.admin',
-#     'django.contrib.auth',
-#     'django.contrib.contenttypes',
-#     'django.contrib.sessions',
-#     'django.contrib.messages',
-#     'django.contrib.staticfiles',
-#     'rest_framework',
-#     'blog.apps.BlogConfig',
-#     'api_v0.apps.ApiV0Config',
-#     'blog.templatetags.blog_filters',
-#     'django.contrib.sites',
-#     'corsheaders',
-#     'oauth2_provider',
-#     'words',
-#     'account',
-# ]
 
 # Application definition
 
@@ -114,7 +95,12 @@ WSGI_APPLICATION = 'zhuravlev.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse(config('DATABASE_URL')),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+    # 'default': dj_database_url.parse(config('DATABASE_URL')),
+
 }
 
 # Password validation

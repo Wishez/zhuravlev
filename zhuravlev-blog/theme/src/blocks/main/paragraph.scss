@@ -1,7 +1,0 @@
-.paragraph {
-	@extend %fs18;
-	@extend %zeroPadding;
-	@include breakpoint($xs) {
-		width: span(12);
-	}
-}
