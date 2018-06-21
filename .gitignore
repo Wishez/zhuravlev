@@ -3,6 +3,8 @@ bower_components
 .sass-cache
 .idea
 admin
+jet
+jet.dashboard
 rest_framework
-grappelli
+range_filter
 __pycache__

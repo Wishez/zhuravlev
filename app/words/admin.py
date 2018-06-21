@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import *
+from myadmin.admin import admin_site
 # Register your models here.
+@admin.register(User, site=admin_site)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('username', 'email', 'date_joined',)
     filter_fields = ('username', 'email', 'date_joined',)
@@ -8,5 +10,4 @@ class UserAdmin(admin.ModelAdmin):
     ordering = ('date_joined',)
     filter_horizontal = ('words',)
 
-admin.site.register(Word)
-admin.site.register(User, UserAdmin)
+admin_site.register(Word)

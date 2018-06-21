@@ -1,16 +1,17 @@
 # -*- encoding: utf-8 -*-
 from django.contrib import admin
-
+from myadmin.admin import admin_site
 from .models import *
 
 # Register your models here.
+@admin.register(Article, site=admin_site)
 class AdminArticleModel(admin.ModelAdmin):
     list_display = ('title', 'created_at', 'slug',)
     list_filter = ('created_at',)
     date_hirarchy = 'created_at'
     search_fields = ['title', 'text', 'announce_text']
     filter_horizontal = ('tags',)
-
+@admin.register(Year, site=admin_site)
 class AdminYearModel(admin.ModelAdmin):
     list_filter = ('year',)
     date_hirarchy = 'year'
@@ -19,8 +20,7 @@ class AdminYearModel(admin.ModelAdmin):
     ordering = ('year',)
     filter_horizontal = ('articles',)
 
-admin.site.register(Year, AdminYearModel)
-admin.site.register(Tag)
-admin.site.register(Article, AdminArticleModel)
-admin.site.register(Contact)
-admin.site.register(Comment)
+
+admin_site.register(Tag)
+admin_site.register(Contact)
+admin_site.register(Comment)
