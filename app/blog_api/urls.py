@@ -15,12 +15,12 @@ urlpatterns = [
     url(
         r'^tag/$',
         ListTagView.as_view(),
-        name='tag'
+        name='tags_list'
     ),
     url(
         r'^year/$',
         ListYearsView.as_view(),
-        name='tag'
+        name='years_list'
     ),
 
 ]

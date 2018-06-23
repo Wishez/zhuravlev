@@ -14,7 +14,8 @@ from model_utils.models import TimeStampedModel
 import uuid as uuid_lib
 from django.contrib.auth.models import AbstractBaseUser
 from .validators import validate_slug_field
-from django.contrib.auth.models import BaseUserManager
+from .managers import *
+
 
 class Tag(TimeStampedModel):
     tag_name = models.CharField(_('Тэг'), max_length=20)
@@ -52,6 +53,18 @@ class Article(TimeStampedModel):
         blank=True,
         null=True
     )
+    applause = models.IntegerField(
+        _('Количество аплодисментов'),
+        default=0
+    )
+    comments = models.ManyToManyField(
+        "Comment",
+        verbose_name=_('Комментарии'),
+        related_name='article_comments',
+        blank=True
+    )
+    objects = ArticleManager()
+
 
     def __str__(self):
         return self.title
@@ -95,8 +108,6 @@ class Year(TimeStampedModel):
 
 
 
-class UserManager(BaseUserManager):
-    use_for_related_fields = True
 
 class BlogUser(AbstractBaseUser):
     is_changing_password = models.BooleanField(
@@ -123,12 +134,6 @@ class BlogUser(AbstractBaseUser):
         editable=True
     )
 
-    comments = models.ManyToManyField(
-        "Comment",
-        verbose_name=_('Комментарии'),
-        related_name='user_comments',
-        blank=True
-    )
 
     is_active = models.BooleanField(
         _('Активный'),
@@ -163,6 +168,18 @@ class Comment(TimeStampedModel):
         _('Год'),
         max_length=2048
     )
+    applause = models.IntegerField(
+        _('Количество аплодисментов'),
+        default=0
+    )
+    uuid = models.UUIDField(
+        _('ID'),
+        db_index=True,
+        default=uuid_lib.uuid4,
+        editable=True
+    )
+
+    objects = CommentManager()
 
     def __str__(self):
         return self.author.username

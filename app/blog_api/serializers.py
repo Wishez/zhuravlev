@@ -2,24 +2,44 @@
 from rest_framework import serializers
 from blog.models import *
 
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = [
+            'text',
+            'author',
+            'created',
+            'applause',
+        ]
+
 class ArticlePreviewSerializer(serializers.ModelSerializer):
     tags = serializers.StringRelatedField(many=True)
+    comments = serializers.PrimaryKeyRelatedField(
+        read_only=True,
+        many=True
+    )
 
     class Meta:
         model = Article
         fields = [
-            'id',
             'author',
             'title',
+            'applause',
             'created_at',
             'announce_text',
             'url',
-            'tags'
+            'tags',
+            'slug',
+            'comments'
         ]
 
 
 class ArticleDetailSerializer(serializers.ModelSerializer):
     tags = serializers.StringRelatedField(many=True)
+    comments = CommentSerializer(
+        read_only=True,
+        many=True
+    )
 
     class Meta:
         model = Article
@@ -28,7 +48,9 @@ class ArticleDetailSerializer(serializers.ModelSerializer):
             'created_at',
             'text',
             'author',
-            'tags'
+            'tags',
+            'applause',
+            'comments'
         ]
 
 
@@ -44,8 +66,9 @@ class ArchiveArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = [
-            'id',
-            'title'
+            'slug',
+            'title',
+            'created_at'
         ]
 
 
@@ -55,7 +78,6 @@ class YearSerializer(serializers.ModelSerializer):
     class Meta:
         model = Year
         fields = [
-            'id',
             'year',
             'articles'
         ]

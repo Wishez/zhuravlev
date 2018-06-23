@@ -35,6 +35,7 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'corsheaders',
     'oauth2_provider',
+    'django_nose',
 ]
 
 PROJECT_APPS = [
@@ -49,8 +50,9 @@ PROJECT_APPS = [
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
-# Application definition
 
+# Application definition
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 SITE_ID = 1
 DISQUS_API_KEY = config('DISQUS_API_KEY')
 DISQUS_WEBSITE_SHORTNAME = config('DISQUS_WEBSITE_SHORTNAME')

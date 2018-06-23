@@ -117,3 +117,20 @@ class SearchView(BaseView):
             self.template_name,
             super(SearchView, self).get_context_data()
         )
+
+entities = {
+    "article": Article,
+    "comment": Comment
+}
+
+def change_applause(request):
+    if request.method == "POST":
+        data = request.POST
+        action = data.action
+        Entity = entities.get(data.entity)
+        quantity = data.quantity
+
+        Entity.models.change_quantity_applause(action, quantity)
+
+
+
