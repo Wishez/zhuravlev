@@ -2,6 +2,8 @@
 from rest_framework import serializers
 from blog.models import *
 
+
+
 class ArticlePreviewSerializer(serializers.ModelSerializer):
     tags = serializers.StringRelatedField(many=True)
 
@@ -14,12 +16,19 @@ class ArticlePreviewSerializer(serializers.ModelSerializer):
             'created_at',
             'announce_text',
             'url',
-            'tags'
+            'tags',
         ]
 
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = [
+            'id',
+            'tag_name',
+        ]
 
 class ArticleDetailSerializer(serializers.ModelSerializer):
-    tags = serializers.StringRelatedField(many=True)
+    tags = TagSerializer(many=True, read_only=True)
 
     class Meta:
         model = Article
@@ -28,26 +37,23 @@ class ArticleDetailSerializer(serializers.ModelSerializer):
             'created_at',
             'text',
             'author',
-            'tags'
+            'tags',
         ]
 
-class TagSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Tag
-        fields = [
-            'tag_name'
-        ]
+
 
 class ArchiveArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = [
-            'id',
-            'title'
+            'slug',
+            'title',
+            'created_at',
         ]
 
 class YearSerializer(serializers.ModelSerializer):
     articles = ArchiveArticleSerializer(many=True, read_only=True)
+
     class Meta:
         model = Year
         fields = [

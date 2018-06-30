@@ -39,7 +39,7 @@ class TestBlogApi(TestCase):
         self.assertEquals(response.status_code, 200)
         data = json.loads(response.content)
         self.assertTrue(len(data) > 0)
-        self.assertEquals(len(data[0]), 9)
+        self.assertEquals(len(data[0]), 10)
 
     def test_single_article(self):
         article_slug = self.article_slug
@@ -52,7 +52,7 @@ class TestBlogApi(TestCase):
         response = self.client.get(url)
         self.assertEquals(response.status_code, 200)
         data = json.loads(response.content)
-        self.assertEquals(len(data), 7)
+        self.assertEquals(len(data), 8)
 
     def test_tags_list(self):
         url = reverse('tags_list')

@@ -41,6 +41,12 @@ class Article(TimeStampedModel):
        null=True
     )
     title = models.CharField(_('Заголовок'), max_length=128)
+    preview = models.ForeignKey(
+        'album.AlbumImage',
+        verbose_name=_('Album'),
+        blank=True,
+        null=True
+    )
     created_at = models.DateTimeField(_('Созадано'), default=timezone.now)
     announce_text = models.TextField(_('Анонс'), max_length=512, blank=True)
     text = models.TextField(_('Текст'), max_length=20000)

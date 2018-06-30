@@ -44,6 +44,7 @@ PROJECT_APPS = [
     'blog.templatetags.blog_filters',
     'myadmin.apps.MyadminConfig',
     'words.apps.WordsConfig',
+    'album.apps.AlbumConfig',
     'account',
 
 ]
