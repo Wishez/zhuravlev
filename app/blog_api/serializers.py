@@ -61,7 +61,6 @@ class ArticlePreviewSerializer(serializers.ModelSerializer):
             'applause',
             'created_at',
             'announce_text',
-            'url',
             'tags',
             'slug',
             'comments',

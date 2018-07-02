@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 from django.test import TestCase
 from django.urls import reverse
 from words.models import User
 import json
+
 class WordsApi(TestCase):
     def setUp(self):
         user_1, is_created = User.objects.get_or_create(username='username')

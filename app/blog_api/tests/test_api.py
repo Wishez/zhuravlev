@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 from django.test import TestCase
 from model_mommy import mommy
 from django.urls import reverse
@@ -39,7 +40,7 @@ class TestBlogApi(TestCase):
         self.assertEquals(response.status_code, 200)
         data = json.loads(response.content)
         self.assertTrue(len(data) > 0)
-        self.assertEquals(len(data[0]), 10)
+        self.assertEquals(len(data[0]), 9)
 
     def test_single_article(self):
         article_slug = self.article_slug
